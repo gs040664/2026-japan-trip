@@ -1,10 +1,11 @@
 /**
  * 202611JapanTrip - 仙台・宮城・田代島(貓島) 6天5夜行程表 核心互動邏輯 (app.js)
- * 包含田代島漁師民宿、秋保佐勘名宿、全大眾交通精確時刻 (JR/渡輪/巴士/月台) 與 Google Maps 景點資料
+ * 住宿：田代島漁師民宿、秋保溫泉 瑞鳳大旅館、仙台大都會、仙台遠景飯店
+ * 行程：田代島貓島必訪、松島灣、秋保大瀑布、手繪木芥子工藝、森林柴燒披薩、Nikka宮城峽酒廠
  */
 
 // ==========================================================================
-// 1. Google Maps 50 處真實景點資料庫 (含 田代島(貓島) 與 GPS 座標)
+// 1. Google Maps 50 處真實景點資料庫 (含 田代島、秋保大瀑布、瑞鳳大旅館 等)
 // ==========================================================================
 const SPOTS_DATA = [
   {
@@ -50,6 +51,20 @@ const SPOTS_DATA = [
     day: 3
   },
   {
+    id: 104,
+    name: "秋保大瀑布 (Akiu Great Falls / 秋保大滝)",
+    rawTitle: "秋保大滝 国指定名勝",
+    area: "akiu_nikka",
+    areaName: "秋保・宮城峽",
+    lat: 38.2745,
+    lng: 140.6015,
+    type: "spot",
+    typeName: "日本三大名瀑",
+    address: "宮城縣仙台市太白區秋保町馬場字大滝",
+    note: "日本三大名瀑之一・國指定名勝！落差 55 公尺，秋季滿山金黃楓紅環繞，氣勢雄偉震撼。設有展望台與瀑潭步道。",
+    day: 5
+  },
+  {
     id: 1,
     name: "仙台麵包超人兒童博物館&購物商場",
     rawTitle: "仙台麵包超人兒童博物館&購物商場",
@@ -90,20 +105,6 @@ const SPOTS_DATA = [
     address: "宮城縣仙台市青葉區中央 3-6-12 仙台南町通大樓 2F",
     note: "冬季仙台在地必吃名物：水芹鴨肉鍋（包含爽脆水芹根部一起涮煮）。",
     day: 1
-  },
-  {
-    id: 4,
-    name: "藏王御釜 (火山口湖)",
-    rawTitle: "藏王御釜 国有林地 内",
-    area: "zao_shiroishi",
-    areaName: "藏王・白石",
-    lat: 38.1311,
-    lng: 140.4497,
-    type: "spot",
-    typeName: "自然奇景",
-    address: "宮城縣刈田郡藏王町遠刈田溫泉倉石岳國有林內",
-    note: "標高 1672m 的神秘火山口五色湖。（需視 11 月下旬天候道路封閉狀況調整）",
-    day: 5
   },
   {
     id: 5,
@@ -160,48 +161,6 @@ const SPOTS_DATA = [
     address: "宮城縣仙台市青葉區中央 2-1",
     note: "仙台站前歷史悠久的拱廊商店街，藥妝、居酒屋、拉麵店林立，雨天不愁。",
     day: 1
-  },
-  {
-    id: 9,
-    name: "國營陸奧湖畔公園 (Michinoku Park)",
-    rawTitle: "5MJ9+WX Kohan Park, Kawasaki",
-    area: "zao_shiroishi",
-    areaName: "藏王・白石",
-    lat: 38.1725,
-    lng: 140.6012,
-    type: "spot",
-    typeName: "自然景觀",
-    address: "宮城縣柴田郡川崎町大字小野字二本松 53-9",
-    note: "東北大型國營生態公園，湖畔秋日楓紅倒影極美。",
-    day: 5
-  },
-  {
-    id: 11,
-    name: "牧場咖啡 醍醐 (Farm Cafe Daigo)",
-    rawTitle: "牧場カフェ醍醐 株式会社ZPF",
-    area: "zao_shiroishi",
-    areaName: "藏王・白石",
-    lat: 38.0165,
-    lng: 140.5847,
-    type: "food",
-    typeName: "特色甜點",
-    address: "宮城縣白石市福岡深谷字二ノ萱 282-2",
-    note: "⚠️ 一定要看 Google 評論再點餐！照片看似正常，但 L 號 3 種口味拿到會嚇瘋，一碗重達 1 公斤！只要日幣 ¥590，老闆娘挖冰淇淋絕不手軟！香濃美味。",
-    day: 5
-  },
-  {
-    id: 12,
-    name: "白石川堤 一目千本櫻 (柴田町景觀)",
-    rawTitle: "白石川堤 一目千本櫻",
-    area: "zao_shiroishi",
-    areaName: "藏王・白石",
-    lat: 38.0538,
-    lng: 140.7580,
-    type: "spot",
-    typeName: "自然步道",
-    address: "宮城縣柴田郡大河原町～柴田町白石川堤",
-    note: "流經柴田町的清澈溪流，秋季河堤步道寧靜悠閒。",
-    day: 4
   },
   {
     id: 13,
@@ -340,7 +299,7 @@ const SPOTS_DATA = [
     type: "spot",
     typeName: "溪谷自然步道",
     address: "宮城縣仙台市太白區秋保町湯元",
-    note: "名取川侵蝕生成的奇岩怪石絕壁，步道入口橋上可俯瞰著名的「天然愛心石」。佐勘飯店步行 5 分鐘。",
+    note: "名取川侵蝕生成的奇岩怪石絕壁，步道入口橋上可俯瞰著名的「天然愛心石」。瑞鳳飯店步行 6 分鐘。",
     day: 5
   },
   {
@@ -382,21 +341,21 @@ const SPOTS_DATA = [
     type: "spot",
     typeName: "威士忌酒廠見學",
     address: "宮城縣仙台市青葉區日光 1 番地",
-    note: "日本威士忌之父竹鶴政孝打造的紅磚蒸餾所，免費深度導覽需官網提前預約，可走進橡木桶庫並品嚐限定威士忌。JR 作並站有免費接駁車 16:28 發車。",
+    note: "日本威士忌之父竹鶴政孝打造的紅磚蒸餾所，免費深度導覽需官網提前預約，可走進橡木桶庫並品嚐限定威士忌。JR 作並站有免費接駁車 14:55 發車。",
     day: 5
   },
   {
     id: 27,
-    name: "秋保溫泉 (Akiu Onsen 溫泉鄉 / 宿：佐勘)",
-    rawTitle: "Akiu Onsen 太白區",
+    name: "秋保溫泉 瑞鳳大旅館 (Hotel Zuiho)",
+    rawTitle: "ホテル瑞鳳 (Hotel Zuiho Akiu)",
     area: "akiu_nikka",
     areaName: "秋保・宮城峽",
-    lat: 38.2268,
-    lng: 140.7188,
+    lat: 38.2280,
+    lng: 140.7195,
     type: "stay",
-    typeName: "名湯溫泉住宿",
-    address: "宮城縣仙台市太白區秋保町湯元",
-    note: "擁有 1500 年歷史的「奧州三大名湯」，泉質溫潤。第 4 晚安排入住千年名宿「佐勘」，享受名取川溪谷露天風呂與會席晚餐。",
+    typeName: "頂級名湯大旅館",
+    address: "宮城縣仙台市太白區秋保町湯元字除 26-1",
+    note: "🌟 奧州頂級度假大旅館！擁有 6 大景觀主題露天溫泉與日式迴遊庭園；晚餐享用連續多年獲選日本 No.1 豪華自助百匯（現場握壽司、黑毛和牛排、現烤牛舌、松葉蟹吃到飽）！",
     day: 4
   },
   {
@@ -454,20 +413,6 @@ const SPOTS_DATA = [
     address: "宮城縣仙台市若林區荒濱新 2-17-1",
     note: "JR 東日本打造的現代化觀光果園，可體驗採摘當季新鮮蘋果/草莓，品嚐農園特製聖代甜點。荒井站轉市營巴士直達。",
     day: 6
-  },
-  {
-    id: 38,
-    name: "船岡城址公園 (斜坡單軌纜車)",
-    rawTitle: "船岡城址公園 Tateyama-95-1",
-    area: "zao_shiroishi",
-    areaName: "藏王・白石",
-    lat: 38.0567,
-    lng: 140.7612,
-    type: "spot",
-    typeName: "景觀公園/纜車",
-    address: "宮城縣柴田郡柴田町大字船岡字館山 95-1",
-    note: "搭乘特色斜坡復古單軌纜車登上山頂，眺望白石川與藏王連峰秋色。JR 船岡站步行 15 分鐘。",
-    day: 4
   },
   {
     id: 39,
@@ -552,34 +497,6 @@ const SPOTS_DATA = [
     address: "宮城縣仙台市青葉區中央 2-1-27 5F",
     note: "氛圍極度迷人的書香復古咖啡館，提供精緻早午餐、法式烘焙甜點與虹吸手沖咖啡。",
     day: 2
-  },
-  {
-    id: 45,
-    name: "tsuribori cafe Clover (釣魚咖啡館)",
-    rawTitle: "tsuribori cafe Clover",
-    area: "zao_shiroishi",
-    areaName: "藏王・白石",
-    lat: 38.0142,
-    lng: 140.5821,
-    type: "food",
-    typeName: "釣魚料理午餐",
-    address: "宮城縣白石市福岡深谷字出口 9-4",
-    note: "可親自體驗釣彩虹鱒魚，店家現場幫忙鹽烤料理成鮮美午餐！周圍田園風光寧靜。",
-    day: 5
-  },
-  {
-    id: 46,
-    name: "宮城藏王狐狸村 (Miyagi Zao Fox Village)",
-    rawTitle: "宮城藏王狐狸村 福岡八宮川原子１１−３",
-    area: "zao_shiroishi",
-    areaName: "藏王・白石",
-    lat: 38.0408,
-    lng: 140.5303,
-    type: "spot",
-    typeName: "萌寵動物體驗",
-    address: "宮城縣白石市福岡八宮字川原子 11-3",
-    note: "放養 100 多隻不同品種狐狸！11 月狐狸已換上蓬鬆毛茸茸的冬毛，可參加抱狐狸合照體驗（JR 白石站 11:15 有接駁車直達）。",
-    day: 5
   },
   {
     id: 48,
@@ -895,11 +812,11 @@ const ITINERARY_DATA = {
   day4: {
     dayNum: "Day 4",
     date: "2026 年 11 月 22 日 (週日)",
-    theme: "田代島晨光晨貓 ➔ 渡輪返石卷 ➔ 松島灣遊船 ➔ 鹽釜海鮮市場 ➔ 宿：秋保溫泉 佐勘 (1500年名湯)",
+    theme: "田代島晨光 ➔ 松島灣遊船 ➔ 鹽釜 ➔ 宿：秋保溫泉 瑞鳳大旅館 (六大露天風呂+極致百匯)",
     area: "田代島・松島・鹽竈・秋保",
-    stay: "♨️ 秋保溫泉 傳承千年之宿 佐勘 (Sakan Ryokan) ｜ 露天風呂與會席料理",
-    budget: "¥18,000 / 人 (含秋保溫泉頂級一泊二食)",
-    transitSummary: "🚢 渡輪(09:05發) ➔ 🚆 JR仙石線(10:18發 ➔ 10:59抵松島海岸) ➔ 🚌 宮城交通巴士(15:35仙台發 ➔ 16:25抵秋保)",
+    stay: "♨️ 秋保溫泉 瑞鳳大旅館 (Hotel Zuiho) ｜ 六大露天風呂與極致百匯晚宴",
+    budget: "¥17,000 / 人 (含瑞鳳頂級一泊二食早晚餐)",
+    transitSummary: "🚢 渡輪(09:05發) ➔ 🚆 JR仙石線(10:18發 ➔ 10:59抵松島海岸) ➔ 🚌 宮城交通巴士(15:35仙台發 ➔ 16:25抵瑞鳳前)",
     items: [
       {
         time: "07:00 - 08:30",
@@ -963,21 +880,21 @@ const ITINERARY_DATA = {
       },
       {
         time: "15:35 - 16:25",
-        title: "搭乘宮城交通巴士直達「秋保溫泉 佐勘」",
+        title: "搭乘宮城交通巴士直達「秋保溫泉 瑞鳳大旅館」",
         type: "transit",
         typeName: "溫泉路線巴士",
-        desc: "於仙台站西口 8 號月台搭乘直達秋保溫泉之路線巴士，直達名宿大門口。",
-        transitDetail: "🚌 宮城交通巴士 (秋保溫泉行) ｜ 15:35 仙台站西口(8號乘車處)發 ➔ 16:25 抵達 秋保溫泉 佐勘前 (車程 50分，¥860，可刷 IC 卡)",
+        desc: "於仙台站西口 8 號月台搭乘直達秋保溫泉之路線巴士，直達瑞鳳大旅館前。",
+        transitDetail: "🚌 宮城交通巴士 (秋保溫泉行) ｜ 15:35 仙台站西口(8號乘車處)發 ➔ 16:25 抵達 瑞鳳前 (車程 50分，¥860，可刷 IC 卡)",
         cost: "¥860",
         spotId: 27
       },
       {
         time: "16:30 - 21:30",
-        title: "入住「傳承千年之宿 佐勘」➔ 溪谷露天風呂 ➔ 仙台牛會席晚宴",
+        title: "入住「秋保溫泉 瑞鳳大旅館」➔ 六大露天風呂 ➔ 日本第一豪華百匯盛宴",
         type: "stay",
         typeName: "頂級名湯一泊二食",
-        desc: "享受 1500 年伊達政宗御用名湯，在名取川溪谷露天溫泉洗滌身心，品嚐精緻和風會席料理！",
-        cost: "含在住宿 (約 ¥17,000/人)",
+        desc: "享受 6 大主題景觀露天風呂與日式庭園，晚餐享用現捏黑鮪壽司、現煎霜降黑毛和牛排、現烤炭火牛舌、松葉蟹吃到飽晚宴！",
+        cost: "含在住宿 (約 ¥16,000/人)",
         spotId: 27
       }
     ]
@@ -985,101 +902,70 @@ const ITINERARY_DATA = {
   day5: {
     dayNum: "Day 5",
     date: "2026 年 11 月 23 日 (週一 - 勤勞感謝日)",
-    theme: "佐勘豐盛朝食 ➔ 磊磊峽尋愛心 ➔ 藏王狐狸村 ➔ 醍醐1kg冰品 ➔ Nikka酒廠 ➔ 宿：仙台遠景飯店(絹之湯)",
-    area: "秋保・藏王・白石・宮城峽・仙台",
+    theme: "瑞鳳豪華晨間百匯 ➔ 磊磊峽尋愛心 ➔ 日本三大名瀑秋保大瀑布 ➔ 傳統工藝體驗 ➔ 森林披薩 ➔ Nikka宮城峽酒廠 ➔ 宿：仙台遠景飯店",
+    area: "秋保・宮城峽・仙台",
     stay: "🏨 仙台遠景飯店 (Hotel Vista Sendai) ｜ 頂樓絹之湯大浴場",
-    budget: "¥9,500 / 人",
-    transitSummary: "🚌 秋保巴士(09:15發) ➔ 🚆 JR東北本線(10:20發 ➔ 11:08抵白石) + 接駁 ➔ 🚆 JR仙山線(15:45發 ➔ 16:24抵作並)",
+    budget: "¥8,500 / 人",
+    transitSummary: "🚌 秋保大瀑布專線巴士 (10:05發) ➔ 🚌 宮城交通巴士 ➔ 🚆 JR仙山線 (作並站免費接駁 ➔ Nikka酒廠)",
     items: [
       {
-        time: "08:00 - 09:15",
-        title: "佐勘享用日式朝食 ➔ 退房 ➔ 漫步磊磊峽步道",
+        time: "07:30 - 08:45",
+        title: "瑞鳳大旅館極致百匯朝食 ➔ 退房",
         type: "stay",
-        typeName: "朝食與步道",
-        desc: "品嚐旅館精緻早餐後辦理退房，漫步名取川溪谷步道，從橋上俯瞰著名的「天然愛心石」。",
-        transitDetail: "🚶 佐勘步行 5分鐘至磊磊峽步道",
+        typeName: "朝食與退房",
+        desc: "享用瑞鳳豐盛早餐百匯（現煎蛋卷、現煮海鮮粥、道地小菜與鮮果），退房出發。",
+        transitDetail: "🚶 瑞鳳飯店步行 6分鐘至磊磊峽步道",
         cost: "-",
+        spotId: 27
+      },
+      {
+        time: "09:00 - 09:50",
+        title: "磊磊峽 (Rairaikyo Gorge) 步道尋找「天然愛心石」",
+        type: "spot",
+        typeName: "溪谷自然步道",
+        desc: "漫步名取川溪谷步道，從覗橋俯瞰溪谷中自然侵蝕生成的浪漫「天然愛心石」，欣賞秋日奇岩怪石絕壁。",
+        transitDetail: "🚶 溪谷步道漫步 ➔ 湯元巴士站",
+        cost: "免費",
         spotId: 22
       },
       {
-        time: "09:15 - 10:05",
-        title: "搭乘宮城交通巴士返回仙台站",
-        type: "transit",
-        typeName: "路線巴士",
-        desc: "於佐勘前站牌搭乘巴士返回仙台車站西口。",
-        transitDetail: "🚌 宮城交通巴士 ｜ 09:15 佐勘前發 ➔ 10:05 抵達 仙台站西口 (車程 50分，¥860，刷 IC 卡)",
-        cost: "¥860",
-        spotId: 5
-      },
-      {
-        time: "10:20 - 11:08",
-        title: "搭乘 JR 東北本線前往「白石站」",
-        type: "transit",
-        typeName: "JR 電車",
-        desc: "自仙台站搭乘東北本線電車直達白石站。",
-        transitDetail: "🚆 JR 東北本線 (普通・白石/福島行) ｜ 10:20 JR仙台站(1/2月台)發 ➔ 11:08 抵達 JR白石站 (車程 48分，¥770，刷 Suica)",
-        cost: "¥770",
-        spotId: 46
-      },
-      {
-        time: "11:15 - 11:40",
-        title: "白石站 ➔ 轉搭專車抵達宮城藏王狐狸村",
-        type: "transit",
-        typeName: "專車接駁",
-        desc: "出白石站搭乘市民巴士或站前共乘計程車直達狐狸村大門口。",
-        transitDetail: "🚕 狐狸村接駁專用車 / 共乘 ｜ 11:15 JR白石站前發 ➔ 11:40 抵達 藏王狐狸村 (車程 25分，每人約 ¥800)",
-        cost: "約 ¥800",
-        spotId: 46
-      },
-      {
-        time: "11:40 - 13:40",
-        title: "宮城藏王狐狸村 (超萌冬毛互動體驗)",
+        time: "10:05 - 11:35",
+        title: "秋保大瀑布 (Akiu Great Falls) —— 日本三大名瀑・國指定名勝",
         type: "spot",
-        typeName: "萌寵體驗",
-        desc: "放養 100 多隻狐狸！11 月已換上蓬鬆毛茸茸的冬毛，可參加近距離抱狐狸合照體驗。",
-        note: "⚠️ 請遵守安全規範：勿穿著流蘇飄帶衣物、勿觸摸野生狀態狐狸、手機請套掛繩。",
-        transitDetail: "🚶 園區內漫步",
-        cost: "門票 ¥1,000 + 抱狐狸 ¥600",
-        spotId: 46
+        typeName: "日本三大名瀑",
+        desc: "欣賞落差高達 55 公尺的震撼瀑布！秋季被滿山金黃楓紅包圍，水氣騰空如萬馬奔騰，順道參拜秋保大滝不動尊。",
+        transitDetail: "🚌 秋保大滝專線巴士 ｜ 10:05 湯元發 ➔ 10:25 抵達 秋保大滝 (車程 20分，¥460)",
+        cost: "¥460",
+        spotId: 104
       },
       {
-        time: "13:45 - 14:40",
-        title: "牧場咖啡 醍醐 (1kg 巨無霸冰淇淋) ➔ 返回白石站",
+        time: "11:50 - 13:30",
+        title: "秋保傳統工藝之里 (手繪木芥子體驗) ➔ 森林柴燒披薩午餐",
         type: "food",
-        typeName: "豪邁甜點",
-        desc: "在醍醐挑戰份量重達 1 公斤的驚人巨無霸牛乳冰淇淋 (只要 ¥590！) 後搭車返回 JR 白石站。",
-        transitDetail: "🚕 專車接駁至醍醐咖啡 ➔ 14:40 抵達 JR 白石站",
-        cost: "約 ¥1,500",
-        spotId: 11
+        typeName: "工藝體驗與美食",
+        desc: "親手用毛筆繪製專屬木芥子娃娃 (Kokeshi) 當作紀念品；午餐享用隱身在秋保森林裡的「Pizza & Cafe Dottore」石窯柴燒拿坡里披薩，或至 Akiu Winery 品酒！",
+        transitDetail: "🚌 搭巴士返回湯元工藝之里 ➔ 步行至森林披薩餐廳",
+        cost: "約 ¥2,200",
+        spotId: 20
       },
       {
-        time: "14:52 - 15:38",
-        title: "搭 JR 東北本線返回仙台站",
+        time: "14:00 - 14:50",
+        title: "搭車前往 JR 作並站 ➔ 轉乘 Nikka 免費接駁車",
         type: "transit",
-        typeName: "JR 電車",
-        desc: "搭乘電車返回仙台站，準備轉乘仙山線前往酒廠。",
-        transitDetail: "🚆 JR 東北本線 ｜ 14:52 白石站發 ➔ 15:38 抵達 JR 仙台站 (車程 46分，¥770，刷 Suica)",
-        cost: "¥770",
-        spotId: 5
-      },
-      {
-        time: "15:45 - 16:33",
-        title: "搭 JR 仙山線 + Nikka 免費接駁車至宮城峽蒸餾所",
-        type: "transit",
-        typeName: "JR + 免費接駁",
-        desc: "於仙台站搭仙山線至作並站，出站搭乘酒廠專用免費接駁車直達蒸餾所。",
-        transitDetail: "🚆 JR 仙山線 (15:45 仙台發 ➔ 16:24 抵作並，¥510) ➔ 🚌 Nikka 免費接駁車 (16:28 作並站發 ➔ 16:33 抵酒廠大門)",
-        cost: "¥510",
+        typeName: "山林巴士接駁",
+        desc: "搭車穿越山林前往 JR 仙山線作並站，搭乘酒廠專用免費接駁車。",
+        transitDetail: "🚌 專車/巴士前往 JR 作並站 ➔ 14:55 作並站前搭 Nikka 免費接駁巴士 5分鐘直達大門",
+        cost: "約 ¥600",
         spotId: 26
       },
       {
-        time: "16:35 - 17:40",
-        title: "Nikka 宮城峽蒸餾酒廠 (紅磚酒廠見學與試飲)",
+        time: "15:00 - 17:00",
+        title: "Nikka 宮城峽蒸餾所 (紅磚威士忌酒廠見學與免費試飲)",
         type: "spot",
         typeName: "威士忌酒廠",
         desc: "日本威士忌聖地！參觀巨大蒸餾銅鍋與橡木桶倉庫，免費試飲限定款威士忌與蘋果酒。",
         note: "需事先官網預約免費導覽場次。",
-        transitDetail: "🚶 酒廠園區參觀 ➔ 17:40 搭接駁車回作並站",
+        transitDetail: "🚶 酒廠園區參觀 ➔ 17:35 搭接駁車回作並站",
         cost: "免費見學",
         spotId: 26
       },
@@ -1603,7 +1489,6 @@ function renderSpotsVault(filterArea) {
   document.getElementById("count-tashiro").textContent = SPOTS_DATA.filter(s => s.area === "tashirojima_ishinomaki").length;
   document.getElementById("count-sendai").textContent = SPOTS_DATA.filter(s => s.area === "sendai_city").length;
   document.getElementById("count-matsushima").textContent = SPOTS_DATA.filter(s => s.area === "matsushima_shiogama").length;
-  document.getElementById("count-zao").textContent = SPOTS_DATA.filter(s => s.area === "zao_shiroishi").length;
   document.getElementById("count-akiu").textContent = SPOTS_DATA.filter(s => s.area === "akiu_nikka").length;
   
   let filtered = SPOTS_DATA;

@@ -1,22 +1,27 @@
 ---
-title: 每日行程規劃索引 (Itinerary Index - 2026/11/19 ~ 11/24)
-tags: [itinerary, schedule, sendai, miyagi, tashirojima, 6days]
+id: itinerary_master_index
+title: 2026 日本自由行 每日行程索引 (Itinerary Master Index)
+tags: [itinerary, index, sendai, tashirojima, akiu]
 updated: 2026-08-29
 ---
 
-# 🍁 2026 日本東北自由行：6 天 5 夜每日行程規劃 (kb/itinerary/INDEX.md)
+# 📅 2026 日本東北（仙台・田代島貓島・秋保名湯）6天5夜 每日行程索引
 
-本目錄存放 2026 年 11 月 19 日至 11 月 24 日（台北 ↔ 仙台 6天5夜 全程大眾交通為主）之每日詳細行程計畫。
+| 天數 | 日期 | 行程主題與精華 | 住宿推薦 | 主要大眾交通 | 狀態 |
+|:---|:---|:---|:---|:---|:---|
+| **Day 1** | 11/19 (四) | 台北起飛 ➔ 抵達仙台 ➔ 仙台機場Access電車 ➔ 炭烤牛舌晚餐 | **仙台大都會大飯店** (Hotel Metropolitan Sendai) | 仙台機場 Access 線 (25分，¥660) | 🌟 已定案 |
+| **Day 2** | 11/20 (五) | 仙台朝市 ➔ るーぷる仙台觀光巴士 ➔ 瑞鳳殿 ➔ 青葉城跡 ➔ 國寶大崎八幡宮 | **仙台大都會大飯店** (續住免收拾行李) | るーぷる仙台觀光循環巴士 (一日券 ¥630) | 🌟 已定案 |
+| **Day 3** | 11/21 (六) | 【必訪焦點】JR仙石東北線 ➔ 網地島線渡輪 ➔ 田代島(貓島) ➔ 貓神社健行 | **田代島 漁師民宿「はま屋」** (現撈三陸海味) | JR仙石東北線快速 + 網地島線渡輪客船 (¥1,250) | 🌟 已定案 |
+| **Day 4** | 11/22 (日) | 田代島晨光 ➔ 渡輪返航 ➔ 松島灣定期遊船 ➔ 五大堂烤牡蠣 ➔ 宿：秋保名湯 | **秋保溫泉 瑞鳳大旅館 (Hotel Zuiho)** (六大露天風呂+日本第一百匯) | 網地島線渡輪 + JR仙石線 + 宮城交通巴士 | 🌟 已定案 |
+| **Day 5** | 11/23 (一)**國定假日** | 瑞鳳晨間百匯 ➔ 磊磊峽尋愛心 ➔ 日本三大名瀑秋保大瀑布 ➔ 傳統工藝手繪木芥子 ➔ 森林窯烤披薩 ➔ Nikka宮城峽威士忌酒廠 | **仙台遠景飯店** (Hotel Vista Sendai - 設有絹之湯大浴場) | 秋保專線巴士 + 宮城交通巴士 + JR仙山線 (作並站免費接駁) | 🌟 已定案 |
+| **Day 6** | 11/24 (二) | 荒濱鮮果採摘體驗 / 地底之森博物館 ➔ 仙台站伴手禮最後大採購 ➔ Access直達電車 ➔ 仙台機場返台 | 🏠 返抵台北溫暖的家 | 仙台地下鐵東西線 + 仙台機場 Access 線 (25分，¥660) | 🌟 已定案 |
 
 ---
 
-## 規劃總覽表
-
-| 天數 | 日期 | 星期 | 主要區域 | 每日主題與核心亮點 | 主要大眾交通方式 | 檔案連結 |
-|:---|:---|:---|:---|:---|:---|:---|
-| **Day 01** | 2026-11-19 | 週四 | 仙台市區 | 台北起飛 ➔ 抵達仙台 ➔ 頂級炭烤牛舌/芹菜鍋 ➔ 名掛丁夜巡 | 仙台機場 Access 線 (25分, ¥660) | [`Day01_Arrival_Sendai.md`](file:///c:/Users/hugoy/OneDrive/桌面/202611JapanTrip/kb/itinerary/Day01_Arrival_Sendai.md) |
-| **Day 02** | 2026-11-20 | 週五 | 仙台歷史 | 仙台朝市海鮮 ➔ 復古觀光巴士 ➔ 瑞鳳殿 ➔ 青葉城跡 ➔ 國寶大崎八幡宮 ➔ 青山文庫 | るーぷる仙台循環巴士一日券 (¥630) | [`Day02_Sendai_History_Culture.md`](file:///c:/Users/hugoy/OneDrive/桌面/202611JapanTrip/kb/itinerary/Day02_Sendai_History_Culture.md) |
-| **Day 03** | 2026-11-21 | 週六 | 石卷・田代島 | **【🌟 必訪重點】宮城田代島(貓島) 全日漫遊 ➔ 網地島線渡輪 ➔ 貓神社 ➔ 石卷 ➔ 仙台** | **JR 仙石東北線快速 (55分) + 網地島線渡輪 (46分)** | [`Day03_Tashirojima_Cat_Island.md`](file:///c:/Users/hugoy/OneDrive/桌面/202611JapanTrip/kb/itinerary/Day03_Tashirojima_Cat_Island.md) |
-| **Day 04** | 2026-11-22 | 週日 | 松島・鹽竈 | 鹽釜魚市場自製海鮮丼 ➔ 鹽竈神社202階 ➔ 松島灣遊船 ➔ 瑞巖寺五大堂 ➔ 船岡單軌纜車 | JR 仙石線 + JR 東北本線 (刷Suica) | [`Day04_Matsushima_Shiogama.md`](file:///c:/Users/hugoy/OneDrive/桌面/202611JapanTrip/kb/itinerary/Day04_Matsushima_Shiogama.md) |
-| **Day 05** | 2026-11-23 | 週一 | 藏王・秋保 | 宮城藏王狐狸村冬毛萌寵 ➔ 醍醐1kg巨無霸冰品 ➔ 秋保名湯日歸溫泉 ➔ 磊磊峽 ➔ Nikka宮城峽蒸餾所 | JR 東北本線 + 狐狸村接駁 + JR仙山線 | [`Day05_Zao_Fox_Akiu_Nikka.md`](file:///c:/Users/hugoy/OneDrive/桌面/202611JapanTrip/kb/itinerary/Day05_Zao_Fox_Akiu_Nikka.md) |
-| **Day 06** | 2026-11-24 | 週二 | 仙台・返台 | 荒濱農園採果樂 / 地底之森 ➔ 站前最後伴手禮大採購 ➔ 17:05 Access電車 ➔ 仙台機場 ➔ 台北 | 地下鐵東西線 + 仙台機場 Access 線 | [`Day06_Sendai_Fruit_Departure.md`](file:///c:/Users/hugoy/OneDrive/桌面/202611JapanTrip/kb/itinerary/Day06_Sendai_Fruit_Departure.md) |
+## 🔗 詳細單日行程筆記連結
+- [[Day01_Arrival_Sendai|Day 1：抵達仙台與站前探索]]
+- [[Day02_Sendai_History_Culture|Day 2：仙台市區歷史與文化名勝巡禮]]
+- [[Day03_Tashirojima_Cat_Island|Day 3：【必訪亮點】田代島 (貓島) 渡輪與群貓邂逅]]
+- [[Day04_Matsushima_Shiogama|Day 4：田代島晨光 ➔ 日本三景松島灣 ➔ 秋保溫泉 瑞鳳大旅館]]
+- [[Day05_Zao_Fox_Akiu_Nikka|Day 5：瑞鳳豪華百匯 ➔ 磊磊峽 ➔ 日本三大名瀑秋保大滝 ➔ Nikka 宮城峽蒸餾所]]
+- [[Day06_Sendai_Fruit_Departure|Day 6：荒濱採果 ➔ 仙台站名產大採買 ➔ 滿載返台]]
