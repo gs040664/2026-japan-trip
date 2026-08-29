@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f121a">
+  <title>2026 日本東北秋季自由行・仙台宮城&田代島(貓島) 6天5夜行程與住宿規劃</title>
+  <meta name="description" content="2026年11月19日~11月24日 台北往返仙台 6天5夜自由行全攻略，包含田代島(貓島)漁師民宿、秋保溫泉佐勘名宿、大眾交通與景點地圖分佈。">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glow & Foliage Canvas -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+  <canvas id="foliage-canvas"></canvas>
+
+  <div class="app-container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="nav-brand">
+        <span class="brand-icon">🍁</span>
+        <div class="brand-text">
+          <span class="brand-title">TOHOKU 2026</span>
+          <span class="brand-subtitle">仙台・宮城・田代島(貓島) 6天5夜自由行</span>
+        </div>
+      </div>
+      
+      <div class="nav-actions">
+        <button id="btn-toggle-particles" class="nav-btn" title="切換楓葉特效">
+          <i class="fa-solid fa-leaf"></i> <span>動態楓葉</span>
+        </button>
+        <button id="btn-print-handbook" class="nav-btn btn-primary" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> <span>列印/匯出 PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-calendar-check"></i> 2026.11.19 (Thu) - 11.24 (Tue) ｜ 6 天 5 夜
+        </div>
+        <h1 class="hero-title">日本東北秋季自由行・行程與住宿規劃</h1>
+        <p class="hero-desc">
+          探索伊達政宗歷史古都・<strong>宮城田代島(貓島)當地特色漁師民宿</strong>・日本三景松島灣・藏王超萌冬毛狐狸村・<strong>奧州秋保溫泉佐勘名湯</strong>與極致仙台牛舌饗宴。（全程大眾交通 JR + 渡輪 + 觀光巴士導引）
+        </p>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-card">
+          <div class="countdown-label">
+            <i class="fa-solid fa-plane-departure"></i> 距離台北起飛出發還有：
+          </div>
+          <div class="countdown-timer" id="countdown-timer">
+            <div class="time-block"><span id="cd-days">--</span><label>天</label></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-hours">--</span><label>時</label></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-mins">--</span><label>分</label></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-secs">--</span><label>秒</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flight Summary Cards -->
+      <div class="flight-cards-container">
+        <div class="flight-card outbound">
+          <div class="flight-header">
+            <span class="flight-tag tag-depart"><i class="fa-solid fa-plane-departure"></i> 去程航班</span>
+            <span class="flight-date">11 月 19 日 (週四)</span>
+          </div>
+          <div class="flight-route">
+            <div class="airport">
+              <span class="code">TPE</span>
+              <span class="name">台北桃園 T1</span>
+              <span class="time">14:35</span>
+            </div>
+            <div class="flight-arrow">
+              <span class="duration">3h 10m</span>
+              <div class="line"><i class="fa-solid fa-plane"></i></div>
+              <span class="status">直飛</span>
+            </div>
+            <div class="airport">
+              <span class="code">SDJ</span>
+              <span class="name">仙台機場</span>
+              <span class="time">18:45</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flight-card inbound">
+          <div class="flight-header">
+            <span class="flight-tag tag-return"><i class="fa-solid fa-plane-arrival"></i> 回程航班</span>
+            <span class="flight-date">11 月 24 日 (週二)</span>
+          </div>
+          <div class="flight-route">
+            <div class="airport">
+              <span class="code">SDJ</span>
+              <span class="name">仙台機場</span>
+              <span class="time">19:40</span>
+            </div>
+            <div class="flight-arrow">
+              <span class="duration">4h 20m</span>
+              <div class="line"><i class="fa-solid fa-plane"></i></div>
+              <span class="status">直飛</span>
+            </div>
+            <div class="airport">
+              <span class="code">TPE</span>
+              <span class="name">台北桃園 T1</span>
+              <span class="time">23:00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking Meta Card -->
+        <div class="booking-meta-card">
+          <div class="meta-item">
+            <span class="meta-title"><i class="fa-solid fa-receipt"></i> 訂單編號</span>
+            <span class="meta-val">1658114632869861</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-title"><i class="fa-solid fa-users"></i> 旅客名單 (4位)</span>
+            <span class="meta-val">CHEN T.H. / CHEN Z.X. / PENG S.L. / CHEN Y.R.</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-title"><i class="fa-solid fa-circle-info"></i> 機票總額</span>
+            <span class="meta-val highlight">TWD 80,428</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="main-tabs">
+      <button class="tab-btn active" data-tab="itinerary">
+        <i class="fa-solid fa-route"></i> 每日行程表 (Itinerary)
+      </button>
+      <button class="tab-btn" data-tab="hotels-stay">
+        <i class="fa-solid fa-hotel"></i> 每日精選住宿 (Hotels & Minshuku) 🏨
+      </button>
+      <button class="tab-btn" data-tab="transit-guide">
+        <i class="fa-solid fa-train-subway"></i> 全大眾交通指南 (Transit Guide)
+      </button>
+      <button class="tab-btn" data-tab="map-view">
+        <i class="fa-solid fa-map-location-dot"></i> 全域景點地圖 (Interactive Map)
+      </button>
+      <button class="tab-btn" data-tab="spots-vault">
+        <i class="fa-solid fa-compass"></i> Google 收藏景點庫 (50處)
+      </button>
+      <button class="tab-btn" data-tab="budget-calc">
+        <i class="fa-solid fa-calculator"></i> 預算分帳 & 行李清單
+      </button>
+    </nav>
+
+    <!-- TAB 1: ITINERARY (DEFAULT) -->
+    <main id="tab-itinerary" class="tab-content active">
+      
+      <!-- Day Switcher Sub-tabs -->
+      <div class="day-switcher">
+        <button class="day-btn active" data-day="day1">
+          <span class="d-num">Day 1</span>
+          <span class="d-date">11/19 (四)</span>
+          <span class="d-theme">抵達仙台・牛舌居酒屋</span>
+        </button>
+        <button class="day-btn" data-day="day2">
+          <span class="d-num">Day 2</span>
+          <span class="d-date">11/20 (五)</span>
+          <span class="d-theme">仙台朝市・伊達歷史巡禮</span>
+        </button>
+        <button class="day-btn" data-day="day3">
+          <span class="d-num">Day 3 ⭐</span>
+          <span class="d-date">11/21 (六)</span>
+          <span class="d-theme">【必訪】田代島貓島・住漁師民宿</span>
+        </button>
+        <button class="day-btn" data-day="day4">
+          <span class="d-num">Day 4</span>
+          <span class="d-date">11/22 (日)</span>
+          <span class="d-theme">松島遊船・入住秋保溫泉名湯</span>
+        </button>
+        <button class="day-btn" data-day="day5">
+          <span class="d-num">Day 5</span>
+          <span class="d-date">11/23 (一)</span>
+          <span class="d-theme">藏王狐狸村・Nikka威士忌酒廠</span>
+        </button>
+        <button class="day-btn" data-day="day6">
+          <span class="d-num">Day 6</span>
+          <span class="d-date">11/24 (二)</span>
+          <span class="d-theme">荒濱採果・最後大採購返台</span>
+        </button>
+      </div>
+
+      <!-- Split View: Daily Schedule + Interactive Map Panel -->
+      <div class="itinerary-split-layout">
+        
+        <!-- Left: Timeline Section -->
+        <div class="timeline-wrapper" id="timeline-container">
+          <!-- Populated dynamically via JS based on selected Day -->
+        </div>
+
+        <!-- Right: Synchronized Mini Interactive Map -->
+        <div class="itinerary-map-sidebar">
+          <div class="map-sidebar-header">
+            <div class="sidebar-title">
+              <i class="fa-solid fa-map-pin"></i> 當日景點分布地圖
+            </div>
+            <span class="map-hint">點擊景點卡片自動定位</span>
+          </div>
+          <div id="itinerary-day-map" class="day-map-frame"></div>
+          <div class="map-legend">
+            <span class="legend-item"><span class="dot dot-day"></span> 當日景點</span>
+            <span class="legend-item"><span class="dot dot-food"></span> 美食/餐廳</span>
+            <span class="legend-item"><span class="dot dot-spot"></span> 名勝/體驗</span>
+            <span class="legend-item"><span class="dot dot-stay"></span> 住宿飯店</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- TAB 2: HOTELS & MINSHUKU (DEDICATED ACCOMMODATION TAB) -->
+    <section id="tab-hotels-stay" class="tab-content">
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-hotel"></i> 2026 日本東北 5 晚精選住宿推薦與配置方案 (4人同行)</h3>
+          <span class="badge-tag">兼具大眾交通・貓島深度體驗・溫泉享受</span>
+        </div>
+
+        <div class="hotels-grid">
+          
+          <!-- Hotel Card 1: Night 1 & 2 Sendai Station -->
+          <div class="hotel-card">
+            <div class="hotel-card-badge">Night 1 & Night 2 ｜ 11/19 (四) ~ 11/21 (六)</div>
+            <div class="hotel-img-placeholder hotel-sendai">
+              <span class="hotel-type-tag"><i class="fa-solid fa-train"></i> 仙台站西口直通</span>
+            </div>
+            <div class="hotel-content">
+              <h4>仙台大都會大飯店 (Hotel Metropolitan Sendai)</h4>
+              <p class="hotel-subtitle">或 <strong>里士滿尊貴飯店 仙台站前 (Richmond Hotel Premier)</strong></p>
+              <div class="hotel-features">
+                <span class="feat-tag"><i class="fa-solid fa-person-walking"></i> 出站 1 分鐘直達</span>
+                <span class="feat-tag"><i class="fa-solid fa-suitcase"></i> 抵達晚免搬行李</span>
+                <span class="feat-tag"><i class="fa-solid fa-mug-saucer"></i> 免費下午茶/飲品</span>
+              </div>
+              <p class="hotel-desc">
+                抵達仙台當晚直通飯店辦理 Check-in，下樓即是名掛丁與牛舌名店街；連住兩晚免換房整理行李，隔日早晨 07:24 輕鬆自仙台站出發前往田代島。
+              </p>
+              <div class="hotel-footer">
+                <span class="hotel-price">預估 ¥28,000 - ¥36,000 / 晚 (4人)</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Metropolitan+Sendai" target="_blank" class="mini-btn">
+                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hotel Card 2: Night 3 Tashirojima Cat Island Stay (FEATURED) -->
+          <div class="hotel-card featured-cat-card">
+            <div class="hotel-card-badge cat-badge"><i class="fa-solid fa-cat"></i> Night 3 ｜ 11/21 (六) 貓島當地住宿首選</div>
+            <div class="hotel-img-placeholder hotel-tashiro">
+              <span class="hotel-type-tag"><i class="fa-solid fa-fish"></i> 仁斗田港聚落・一泊二食</span>
+            </div>
+            <div class="hotel-content">
+              <h4>田代島 漁師民宿「はま屋」(Hamaya Minshuku)</h4>
+              <p class="hotel-subtitle">備選：<strong>民宿 マリンライフ (Marine Life)</strong> ｜ 天候備案：<strong>石卷 Grand Hotel</strong></p>
+              <div class="hotel-features">
+                <span class="feat-tag"><i class="fa-solid fa-cat"></i> 門口貓咪群聚迎賓</span>
+                <span class="feat-tag"><i class="fa-solid fa-utensils"></i> 當日現撈三陸海鮮晚宴</span>
+                <span class="feat-tag"><i class="fa-solid fa-star"></i> 寧靜島嶼星空與日出</span>
+              </div>
+              <p class="hotel-desc">
+                🌟 <strong>田代島深度夢幻住宿！</strong> 由在地漁師親自經營，自家漁船出海現撈鮮甜三陸刺身與魚料理；當午後末班觀光客渡輪離去後，整座貓島回歸最純粹的靜謐，享受專屬貓咪環繞與海浪晨光！
+              </p>
+              <div class="hotel-note-box">
+                <i class="fa-solid fa-phone"></i> 預約電話：`0225-98-2620` (受理 09:00-20:00) ｜ 建議大件行李寄放仙台站，輕裝隨身包上島。
+              </div>
+              <div class="hotel-footer">
+                <span class="hotel-price">預估 ¥36,000 - ¥44,000 / 晚 (含4人早晚餐)</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E7%94%B0%E4%BB%A3%E5%B3%B6+%E6%BC%81%E5%B8%AB%E6%B0%91%E5%AE%BF%E3%81%AF%E3%81%BE%E5%B1%8B" target="_blank" class="mini-btn">
+                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hotel Card 3: Night 4 Akiu Onsen Ryokan -->
+          <div class="hotel-card">
+            <div class="hotel-card-badge onsen-badge">Night 4 ｜ 11/22 (日) 奧州千年名湯</div>
+            <div class="hotel-img-placeholder hotel-akiu">
+              <span class="hotel-type-tag"><i class="fa-solid fa-hot-tub-person"></i> 1500年伊達名宿・一泊二食</span>
+            </div>
+            <div class="hotel-content">
+              <h4>秋保溫泉 傳承千年之宿 佐勘 (Sakan Ryokan)</h4>
+              <p class="hotel-subtitle">或 <strong>秋保溫泉 瑞鳳 (Hotel Zuiho)</strong> / <strong>綠水亭 (Ryokusui-tei)</strong></p>
+              <div class="hotel-features">
+                <span class="feat-tag"><i class="fa-solid fa-water"></i> 名取川溪谷露天風呂</span>
+                <span class="feat-tag"><i class="fa-solid fa-bowl-food"></i> 宮城仙台牛會席料理</span>
+                <span class="feat-tag"><i class="fa-solid fa-bus"></i> 仙台站免費接駁專車</span>
+              </div>
+              <p class="hotel-desc">
+                飛鳥時代創立、伊達政宗御用湯守名宿！沈浸在名取川溪谷邊的楓林露天溫泉，洗滌連日旅途疲憊，品嚐精緻和風旬味會席晚宴。
+              </p>
+              <div class="hotel-footer">
+                <span class="hotel-price">預估 ¥68,000 - ¥88,000 / 晚 (含4人早晚餐)</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sakan+Akiu+Onsen" target="_blank" class="mini-btn">
+                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hotel Card 4: Night 5 Sendai Station with Onsen Bath -->
+          <div class="hotel-card">
+            <div class="hotel-card-badge">Night 5 ｜ 11/23 (一) 最後一晚放鬆大浴場</div>
+            <div class="hotel-img-placeholder hotel-vista">
+              <span class="hotel-type-tag"><i class="fa-solid fa-bath"></i> 絹之湯天然大浴場</span>
+            </div>
+            <div class="hotel-content">
+              <h4>仙台遠景飯店 (Hotel Vista Sendai)</h4>
+              <p class="hotel-subtitle">或 <strong>Almont Hotel Sendai (青葉之湯)</strong></p>
+              <div class="hotel-features">
+                <span class="feat-tag"><i class="fa-solid fa-shower"></i> 超微細絹之湯大浴場</span>
+                <span class="feat-tag"><i class="fa-solid fa-bag-shopping"></i> 方便大採購打包行李</span>
+                <span class="feat-tag"><i class="fa-solid fa-plane"></i> 直通機場 Access 電車</span>
+              </div>
+              <p class="hotel-desc">
+                旅程最後一晚回到仙台站東口，頂樓大浴場深層舒緩雙腿；寬敞客房便於整理戰利品託運行李，隔日直達機場輕鬆返台。
+              </p>
+              <div class="hotel-footer">
+                <span class="hotel-price">預估 ¥26,000 - ¥32,000 / 晚 (4人)</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Vista+Sendai" target="_blank" class="mini-btn">
+                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: TRANSIT GUIDE -->
+    <section id="tab-transit-guide" class="tab-content">
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-train-subway"></i> 2026 日本東北（仙台・宮城・田代島）大眾交通指南</h3>
+          <span class="badge-tag">全程大眾交通為主</span>
+        </div>
+
+        <div class="transit-guide-grid">
+          <!-- Transit Card 1: Tashirojima -->
+          <div class="transit-card highlight-border">
+            <div class="transit-card-header">
+              <span class="transit-badge-icon"><i class="fa-solid fa-cat"></i></span>
+              <div>
+                <h4>【🌟 必訪重點】田代島 (貓島) 渡輪 + JR 快速列車路線</h4>
+                <span class="transit-sub">仙台站 ➔ 石卷站 ➔ 渡輪碼頭 ➔ 田代島 (仁斗田港)</span>
+              </div>
+            </div>
+            <div class="transit-card-body">
+              <ol class="transit-step-list">
+                <li><strong>JR 仙石東北線（快速）</strong>：07:24 自 JR 仙台站出發 ➔ 08:24 抵達 JR 石卷站（車程 55 分鐘，單程 ¥860，直接刷 Apple Pay Suica）。</li>
+                <li><strong>市區步行</strong>：出 JR 石卷站沿漫畫街步行 15 分鐘（1.1 公里）至「石卷中央發著所（網地島ライン乗り場）」。</li>
+                <li><strong>網地島線渡輪</strong>：09:00 石卷中央發 ➔ 09:46 抵達田代島「仁斗田港」（單程 ¥1,250，需日圓現金購票）。</li>
+                <li><strong>島上過夜/回程</strong>：夜宿「漁師民宿 はま屋」；隔日可搭乘 09:05 或 14:12 渡輪返回石卷中央發著所。</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Transit Card 2: Sendai Airport -->
+          <div class="transit-card">
+            <div class="transit-card-header">
+              <span class="transit-badge-icon"><i class="fa-solid fa-plane"></i></span>
+              <div>
+                <h4>仙台機場 Access 線 (Sendai Airport Line)</h4>
+                <span class="transit-sub">仙台機場 ↔ JR 仙台站直達電車</span>
+              </div>
+            </div>
+            <div class="transit-card-body">
+              <p>從機場航廈 B1 月台直通，每小時約 2-3 班直達電車，車程僅需 25 分鐘，單程 ¥660，支援 Suica / PASMO / Apple Pay 直接感應進出。</p>
+            </div>
+          </div>
+
+          <!-- Transit Card 3: Loople Sendai -->
+          <div class="transit-card">
+            <div class="transit-card-header">
+              <span class="transit-badge-icon"><i class="fa-solid fa-bus"></i></span>
+              <div>
+                <h4>るーぷる仙台 (Loople Sendai) 觀光循環巴士</h4>
+                <span class="transit-sub">市區古蹟名勝單向循環</span>
+              </div>
+            </div>
+            <div class="transit-card-body">
+              <p>乘車處：仙台站西口巴士總站 <strong>16 號月台</strong>。每 20 分鐘一班，串聯瑞鳳殿、青葉城跡、大崎八幡宮。推薦購買一日券 (¥630)，出示享門票折抵。</p>
+            </div>
+          </div>
+
+          <!-- Transit Card 4: Matsushima & Shiogama -->
+          <div class="transit-card">
+            <div class="transit-card-header">
+              <span class="transit-badge-icon"><i class="fa-solid fa-water"></i></span>
+              <div>
+                <h4>JR 仙石線 (松島・鹽竈海線)</h4>
+                <span class="transit-sub">仙台 ➔ 東鹽釜 (市場) ➔ 松島海岸 (日本三景)</span>
+              </div>
+            </div>
+            <div class="transit-card-body">
+              <p>搭乘 JR 仙石線至「東鹽釜站」(32分，¥330) 步行至水產市場；後續自「本鹽釜站」搭車至「松島海岸站」(10分，¥200) 直達松島灣，全段可刷 Suica。</p>
+            </div>
+          </div>
+
+          <!-- Transit Card 5: Fox Village -->
+          <div class="transit-card">
+            <div class="transit-card-header">
+              <span class="transit-badge-icon"><i class="fa-solid fa-shield-dog"></i></span>
+              <div>
+                <h4>JR 東北本線 + 白石接駁車 (藏王狐狸村)</h4>
+                <span class="transit-sub">仙台站 ➔ 白石站 ➔ 狐狸村接駁車</span>
+              </div>
+            </div>
+            <div class="transit-card-body">
+              <p>自仙台站搭 JR 東北本線至「白石站」(48分，¥770)，站前轉乘市民巴士福岡線 (¥200) 或共乘計程車 (約25分，約¥800/人) 直達狐狸村大門口。</p>
+            </div>
+          </div>
+
+          <!-- Transit Card 6: Akiu & Nikka -->
+          <div class="transit-card">
+            <div class="transit-card-header">
+              <span class="transit-badge-icon"><i class="fa-solid fa-hot-tub-person"></i></span>
+              <div>
+                <h4>宮城交通巴士 (秋保) & JR 仙山線 (宮城峽酒廠)</h4>
+                <span class="transit-sub">秋保溫泉巴士 + 作並站酒廠免費接駁</span>
+              </div>
+            </div>
+            <div class="transit-card-body">
+              <p>仙台站西口 8 號月台搭宮城交通巴士直達秋保溫泉 (50分，¥860)；前往 Nikka 威士忌酒廠搭 JR 仙山線至「作並站」(40分，¥510)，站前有酒廠免費接駁車。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: FULL INTERACTIVE MAP VIEW -->
+    <section id="tab-map-view" class="tab-content">
+      <div class="fullmap-container">
+        <div class="map-controls-bar">
+          <div class="filter-group">
+            <label><i class="fa-solid fa-filter"></i> 區域篩選：</label>
+            <button class="map-filter-btn active" data-filter="all">全部 (All)</button>
+            <button class="map-filter-btn" data-filter="tashirojima_ishinomaki">田代島・石卷 ⭐</button>
+            <button class="map-filter-btn" data-filter="sendai_city">仙台市區</button>
+            <button class="map-filter-btn" data-filter="matsushima_shiogama">松島・鹽竈</button>
+            <button class="map-filter-btn" data-filter="zao_shiroishi">藏王・白石・柴田</button>
+            <button class="map-filter-btn" data-filter="akiu_nikka">秋保溫泉・宮城峽</button>
+          </div>
+          <div class="map-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="map-search-input" placeholder="搜尋景點名稱、關鍵字、地址...">
+          </div>
+        </div>
+        <div id="full-interactive-map" class="full-map-frame"></div>
+      </div>
+    </section>
+
+    <!-- TAB 5: SPOTS VAULT (50 PLACES CARDS) -->
+    <section id="tab-spots-vault" class="tab-content">
+      <div class="vault-header">
+        <div class="vault-title-group">
+          <h2><i class="fa-solid fa-bookmark"></i> Google Maps 收藏景點資料庫</h2>
+          <p>整合自您的 Google Maps 清單與田代島（共 50 處景點與店家），包含旅客實測備註與防雷建議。</p>
+        </div>
+        <div class="vault-filters">
+          <button class="vault-btn active" data-vault-filter="all">全部 (<span id="count-all">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="tashirojima_ishinomaki">田代島・石卷 (<span id="count-tashiro">0</span>) ⭐</button>
+          <button class="vault-btn" data-vault-filter="sendai_city">仙台市區 (<span id="count-sendai">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="matsushima_shiogama">松島・鹽竈 (<span id="count-matsushima">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="zao_shiroishi">藏王・白石 (<span id="count-zao">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="akiu_nikka">秋保・宮城峽 (<span id="count-akiu">0</span>)</button>
+        </div>
+      </div>
+
+      <div class="spots-grid" id="spots-cards-grid">
+        <!-- Rendered dynamically from JS -->
+      </div>
+    </section>
+
+    <!-- TAB 6: BUDGET & PACKING -->
+    <section id="tab-budget-calc" class="tab-content">
+      <div class="budget-packing-grid">
+        
+        <!-- Left: Budget Summary -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-coins"></i> 預估總預算與分帳計算 (4人同行)</h3>
+            <span class="badge-rate">匯率參考：1 TWD ≈ 4.8 JPY</span>
+          </div>
+          
+          <div class="budget-stats-grid">
+            <div class="stat-box">
+              <span class="stat-label">機票總額 (4人)</span>
+              <span class="stat-num">NT$ 80,428</span>
+              <span class="stat-sub">每人 NT$ 20,107</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">預估住宿 (5晚 4人含早晚餐)</span>
+              <span class="stat-num">¥188,000</span>
+              <span class="stat-sub">約 NT$ 39,100 (每人約 NT$9,775)</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">預估交通(含渡輪)+餐飲門票</span>
+              <span class="stat-num">¥150,000</span>
+              <span class="stat-sub">每人約 ¥37,500 (NT$ 7,800)</span>
+            </div>
+            <div class="stat-box highlight">
+              <span class="stat-label">總計每人預估基本花費</span>
+              <span class="stat-num text-gold">約 NT$ 37,800</span>
+              <span class="stat-sub">(含機票、5晚住宿、餐飲、渡輪與大眾交通)</span>
+            </div>
+          </div>
+
+          <!-- Currency Converter Widget -->
+          <div class="currency-converter">
+            <h4><i class="fa-solid fa-arrow-right-arrow-left"></i> 即時日幣 / 台幣試算</h4>
+            <div class="converter-inputs">
+              <div class="input-wrap">
+                <label>日圓 (JPY ¥)</label>
+                <input type="number" id="calc-jpy" value="10000" step="500">
+              </div>
+              <div class="convert-icon"><i class="fa-solid fa-right-left"></i></div>
+              <div class="input-wrap">
+                <label>新台幣 (TWD NT$)</label>
+                <input type="number" id="calc-twd" value="2083" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Autumn Packing Checklist -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-suitcase-rolling"></i> 11 月東北行前打包必備清單</h3>
+            <span class="badge-tag">仙台氣候 8°C-16°C</span>
+          </div>
+
+          <div class="packing-list" id="packing-checklist">
+            <label class="check-item"><input type="checkbox" checked> <span>護照正本（效期 6 個月以上）</span></label>
+            <label class="check-item"><input type="checkbox" checked> <span>Visit Japan Web (VJW) 填寫並截圖 QR Code</span></label>
+            <label class="check-item"><input type="checkbox" checked> <span>交通 IC 卡 (Apple Pay Suica / 實體卡儲值)</span></label>
+            <label class="check-item"><input type="checkbox" checked> <span>信用卡 (Mastercard/JCB/Visa 開通海外刷卡)</span></label>
+            <label class="check-item"><input type="checkbox"> <span>日圓現金 (渡輪船票及島上民宿無刷卡，建議備 ¥35,000)</span></label>
+            <label class="check-item"><input type="checkbox"> <span>日本上網 eSIM 安裝與開通說明書</span></label>
+            <label class="check-item"><input type="checkbox"> <span>隨身小後背包 (上田代島放 1 晚衣物，大行李寄放仙台)</span></label>
+            <label class="check-item"><input type="checkbox"> <span>防風保暖大衣 / 輕量羽絨外套 (田代島海風與早晚必備)</span></label>
+            <label class="check-item"><input type="checkbox"> <span>發熱衣 (2-3套)、厚襪、好走健走鞋 (貓島全靠步行)</span></label>
+            <label class="check-item"><input type="checkbox"> <span>行動電源 (需隨身攜帶，不可託運)</span></label>
+            <label class="check-item"><input type="checkbox"> <span>常備藥品 (暈船藥、腸胃藥、感冒止痛、休足時間)</span></label>
+            <label class="check-item"><input type="checkbox"> <span>摺疊購物袋與零錢包</span></label>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Modal for Spot Detail Info -->
+    <div id="spot-modal" class="modal-backdrop">
+      <div class="modal-card">
+        <button class="modal-close-btn" id="modal-close">&times;</button>
+        <div class="modal-header">
+          <span class="modal-area-badge" id="modal-area">仙台市區</span>
+          <h3 id="modal-title">景點名稱</h3>
+        </div>
+        <div class="modal-body">
+          <div class="modal-note-box" id="modal-note-box">
+            <strong><i class="fa-solid fa-lightbulb"></i> 旅客實測筆記：</strong>
+            <p id="modal-note">筆記內容</p>
+          </div>
+          <div class="modal-info-row">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="modal-address">景點地址</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" target="_blank" id="modal-gmaps-link" class="modal-btn btn-gmaps">
+            <i class="fa-solid fa-map-location-dot"></i> 在 Google Maps 中開啟導航
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>202611JapanTrip 🍁 日本東北自由行計畫知識庫 ｜ 4人同行 2026/11/19 ~ 11/24 (仙台・田代島貓島・松島・藏王・秋保)</p>
+    </footer>
+
+  </div>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- App JS -->
+  <script src="app.js"></script>
+</body>
+</html>

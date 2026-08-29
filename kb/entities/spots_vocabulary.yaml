@@ -1,0 +1,90 @@
+# 2026 日本自由行核心實體詞彙庫 (Schema: L0)
+# 用於統一名稱、別名檢索與實體關聯分析
+
+version: "1.0.0"
+last_updated: "2026-08-26"
+
+nodes:
+  # 景點類 (Attractions)
+  - id: SHIBUYA SKY
+    aliases: [澀谷Sky, 澀谷展望台, Shibuya Sky Observatory]
+    type: 景點
+    area: 東京
+    tags: [夜景, 展望台, 預約制, 澀谷地標]
+    booking_required: true
+
+  - id: 清水寺
+    aliases: [Kiyomizu-dera, 音羽山清水寺, 清水舞台]
+    type: 景點
+    area: 京都
+    tags: [賞楓名所, 世界遺產, 寺廟, 夜間拜觀]
+    booking_required: false
+
+  - id: 永觀堂
+    aliases: [禪林寺, Eikando, 紅葉永觀堂]
+    type: 景點
+    area: 京都
+    tags: [賞楓名所, 紅葉之王, 夜楓]
+    booking_required: false
+
+  - id: 伏見稻荷大社
+    aliases: [Fushimi Inari, 千本鳥居, 稻荷神社]
+    type: 景點
+    area: 京都
+    tags: [神社, 鳥居, 24小時開放, 必去]
+    booking_required: false
+
+  - id: 淺草寺
+    aliases: [Senso-ji, 雷門, 淺草觀音寺]
+    type: 景點
+    area: 東京
+    tags: [寺廟, 商店街, 下町風情]
+    booking_required: false
+
+  # 交通樞紐類 (Transit Hubs)
+  - id: 東京車站
+    aliases: [Tokyo Station, JR東京站]
+    type: 交通樞紐
+    area: 東京
+    tags: [新幹線, 伴手禮街, 轉運站]
+
+  - id: 京都車站
+    aliases: [Kyoto Station, JR京都站]
+    type: 交通樞紐
+    area: 京都
+    tags: [新幹線, 巴士總站, 轉運站, 伊勢丹]
+
+  - id: 澀谷車站
+    aliases: [Shibuya Station, JR澀谷站]
+    type: 交通樞紐
+    area: 東京
+    tags: [山手線, 轉乘大站]
+
+  # 票券與後勤類 (Logistics / Passes)
+  - id: Suica / Welcome Suica
+    aliases: [西瓜卡, 交通IC卡, Mobile Suica]
+    type: 交通票券
+    area: 全國
+    tags: [地鐵, 巴士, 超商感應支付]
+
+  - id: 東海道新幹線
+    aliases: [Shinkansen, Nozomi, 希望號, 光號]
+    type: 交通路線
+    area: 東海道
+    tags: [東京京都移動, 高速鐵路]
+
+relations:
+  - source: SHIBUYA SKY
+    target: 澀谷車站
+    relation: 鄰近
+    details: "澀谷站直通 Shibuya Scramble Square 頂樓"
+
+  - source: 清水寺
+    target: 永觀堂
+    relation: 同區推薦
+    details: "皆為京都東山秋季賞楓熱門核心，建議分上下午或搭配夜楓"
+
+  - source: SHIBUYA SKY
+    target: 預約系統
+    relation: 前置預約
+    details: "需提前 4 週（28天前）於官網預約日落熱門時段門票"

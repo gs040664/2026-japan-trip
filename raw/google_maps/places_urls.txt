@@ -1,0 +1,6 @@
+# Google Maps 景點網址清單
+# 支援一行一筆 Google Maps 短網址或完整景點網址，執行 parse_google_maps.py 時可解析
+
+https://maps.app.goo.gl/example1 # SHIBUYA SKY
+https://maps.app.goo.gl/example2 # 清水寺
+https://maps.app.goo.gl/example3 # 永觀堂

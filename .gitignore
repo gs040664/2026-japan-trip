@@ -1,0 +1,5 @@
+# Passenger Privacy & Temp Files
+_sandbox/
+*.log
+.DS_Store
+Thumbs.db

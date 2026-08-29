@@ -1,0 +1,32 @@
+# Google 表單與 Google Maps 整合設定檔範例
+# 請複製此檔案為 config/google_config.yaml 並填入您的資訊
+
+google_forms:
+  # 方式 1: Google Sheets 發布至網路的 CSV 連結 (最推薦、免 API Key、零門檻)
+  # 操作方式：在 Google 表單關聯的 Google Sheet 中，點選「檔案」>「共用」>「發布至網路」> 選擇「逗號分隔值 (.csv)」
+  sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-xxxxxxx/pub?output=csv"
+  
+  # 方式 2: 本地 CSV 備份檔案路徑（若手動匯出）
+  local_csv_path: "raw/google_forms/sample_responses.csv"
+  
+  # 欄位對應（可自訂對應您表單的題目名稱）
+  fields_mapping:
+    timestamp: "時間戳記"
+    name: "填答者姓名/暱稱"
+    budget_range: "每日預算範圍"
+    dietary_restrictions: "飲食禁忌與喜好 (例如不吃牛、海鮮過敏、必吃拉麵)"
+    must_visit_spots: "本次旅程心中第一名必去景點"
+    wake_up_preference: "作息風格 (晨型人/自然醒/夜貓)"
+    walking_tolerance: "每日步行耐受度 (輕鬆漫遊/日行萬步/極限行軍)"
+
+google_maps:
+  # 方式 1: Google My Maps (我的地圖) KML/KMZ 檔案匯入路徑
+  # 操作方式：在我的地圖點擊選單 >「匯出為 KML/KMZ」並放入 raw/google_maps/
+  kml_file_path: "raw/google_maps/my_maps.kml"
+  
+  # 方式 2: Google Maps 景點網址清單文字檔
+  places_urls_file: "raw/google_maps/places_urls.txt"
+  
+  # 方式 3: Google Places API 金鑰 (選填，若有填寫可自動抓取營業時間與星級評分)
+  api_key: ""
+  language: "zh-TW"

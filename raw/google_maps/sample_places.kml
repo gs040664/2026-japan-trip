@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>202611 日本秋季自由行地圖</name>
+    <description>2026 日本賞楓與城市探索景點標記</description>
+    <Folder>
+      <name>東京必訪景點</name>
+      <Placemark>
+        <name>SHIBUYA SKY</name>
+        <description>類型: 展望台 / 夜景&#10;備註: 需提前預約日落場次，百萬夜景</description>
+        <Point>
+          <coordinates>139.7013,35.6585,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>淺草寺</name>
+        <description>類型: 寺廟 / 下町&#10;備註: 雷門地標，仲見世通商店街</description>
+        <Point>
+          <coordinates>139.7967,35.7148,0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>京都賞楓景點</name>
+      <Placemark>
+        <name>清水寺</name>
+        <description>類型: 寺廟 / 賞楓&#10;備註: 音羽山清水寺，秋季夜間特別拜觀</description>
+        <Point>
+          <coordinates>135.7850,34.9949,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>永觀堂 (禪林寺)</name>
+        <description>類型: 賞楓名所&#10;備註: 紅葉之王，夜間點燈倒影絕景</description>
+        <Point>
+          <coordinates>135.7953,35.0145,0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>伏見稻荷大社</name>
+        <description>類型: 神社&#10;備註: 千本鳥居，建議清晨前往避開人潮</description>
+        <Point>
+          <coordinates>135.7727,34.9671,0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
