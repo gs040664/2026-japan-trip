@@ -50,16 +50,34 @@ graph LR
 ## 2. 核心實體關聯對照表 (Entity Links)
 
 ### 2.1 每日行程與景點/住宿/交通關聯
-- **Day 01 抵達東京**：
-  - 交通：[[kb/logistics/transit_passes#成田特快-nex|成田特快 N'EX]] / [[kb/logistics/transit_passes#skyliner|Skyliner]]
-  - 景點：[[kb/spots/tokyo/shibuya_sky|SHIBUYA SKY]]、[[kb/spots/tokyo/shibuya_crossing|澀谷十字路口]]
-  - 住宿：[[kb/stay/INDEX#東京市區飯店|東京住宿候選]]
-  - 旅伴偏好核對：[[raw/google_forms/INDEX#填答摘要|夜景願望清單]]
+- **Day 01 抵達仙台 ➔ 國分町**：
+  - 交通：[[kb/logistics/transit_passes#day-1-抵達仙台機場--仙台市區|仙台機場 Access 線]] + 地下鐵南北線
+  - 景點：國分町美食商圈、味太助牛舌、定禪寺通
+  - 住宿：[[kb/logistics/accommodations#night-1--night-2|HOTEL LiVEMAX Sendai Kokubuncho]]
 
-- **京都賞楓段（預計）**：
-  - 景點：[[kb/spots/kansai/kiyomizu_dera|清水寺夜間特別拜觀]]、[[kb/spots/kansai/eikando|永觀堂紅葉]]、[[kb/spots/kansai/arashiyama|嵐山竹林小徑]]
-  - 交通：[[kb/logistics/transit_passes#東海道新幹線|東海道新幹線 (Nozomi/Hikari)]]
-  - 決策考量：[[kb/decisions/INDEX#賞楓人潮避峰策略|賞楓季清晨出發機制]]
+- **Day 02 仙台歷史文化巡禮**：
+  - 交通：[[kb/logistics/transit_passes#day-2-仙台市區歷史巡禮-るーぷる仙台單向順行環線|るーぷる仙台觀光循環巴士]]
+  - 景點：瑞鳳殿、青葉城跡、大崎八幡宮、定禪寺通夜景
+  - 住宿：[[kb/logistics/accommodations#night-1--night-2|HOTEL LiVEMAX Sendai Kokubuncho]] (續住免搬行李)
+
+- **Day 03 田代島 (貓島) 探險 ➔ 傍晚直奔秋保名湯**：
+  - 交通：[[kb/logistics/transit_passes#day-3-仙台--石卷--田代島-貓島-輕裝探險--傍晚直奔秋保溫泉|JR 仙石東北線快速]] + 網地島線客船 + 宮城交通巴士
+  - 景點：仁斗田港聚落群貓、田代島貓神社、石卷漫畫街
+  - 住宿：[[kb/logistics/accommodations#night-3--night-4|仙台秋保温泉 篝火の湯 緑水亭]] (第 1 晚：篝火之湯 + 會席晚宴)
+
+- **Day 04 秋保溫泉深度度假 ➔ 名瀑工藝與酒廠**：
+  - 交通：[[kb/logistics/transit_passes#day-4-秋保溫泉深度度假--磊磊峽--秋保大瀑布--nikka-宮城峽酒廠-連住綠水亭|秋保專線巴士]] + Nikka 接駁車
+  - 景點：綠水亭庭園、磊磊峽天然愛心石、秋保工藝之里、Pizza Dottore、秋保大瀑布、Nikka宮城峽蒸餾所
+  - 住宿：[[kb/logistics/accommodations#night-3--night-4|仙台秋保温泉 篝火の湯 緑水亭]] (連住第 2 晚免換房打包)
+
+- **Day 05 日本三景松島灣遊船 ➔ 松島木屋包棟自炊**：
+  - 交通：[[kb/logistics/transit_passes#day-5-綠水亭退房--松島灣遊船--入住松島包棟木屋--超市採買自炊|JR 仙石線直達]] + 松島計程車
+  - 景點：松島灣遊覽船、五大堂透橋、烤牡蠣、The Big 松島店超市大採買
+  - 住宿：[[kb/logistics/accommodations#night-5|Matsushima hill bungalow]] (獨立包棟私人木屋・附廚房自炊)
+
+- **Day 06 松島出發 ➔ 仙台站採買 ➔ 機場返台**：
+  - 交通：JR 仙石線 + 仙台機場 Access 線
+  - 景點：松島木屋晨景、仙台站 S-PAL 名產伴手禮大採買、仙台牛舌午餐
 
 ---
 

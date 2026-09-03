@@ -2,15 +2,15 @@
 id: Day01_Arrival_Sendai
 date: 2026-11-19
 weekday: 週四 (Thu)
-area: 仙台市區 (Sendai City)
-theme: 台北出發 ➔ 抵達仙台 ➔ 炭烤牛舌晚餐 ➔ 名掛丁商店街夜巡
-stay: "仙台市區飯店（鄰近仙台車站）"
+area: 仙台市中心・國分町 (Sendai Kokubuncho)
+theme: 台北出發 ➔ 抵達仙台 ➔ 地下鐵直達國分町 ➔ HOTEL LiVEMAX Check-in ➔ 國分町牛舌居酒屋
+stay: "HOTEL LiVEMAX Sendai Kokubuncho (ホテルリブマックス仙台国分町)"
 budget_estimate_jpy: 5500
 status: planned
-tags: [itinerary, day01, sendai, arrival, gyutan]
+tags: [itinerary, day01, sendai, arrival, livemax, kokubuncho, gyutan]
 ---
 
-# Day 01: 抵達仙台 ➔ 飯店 Check-in ➔ 頂級牛舌饗宴 ➔ 站前商圈散策
+# Day 01: 抵達仙台 ➔ 前往國分町 ➔ HOTEL LiVEMAX Check-in ➔ 國分町牛舌饗宴
 
 ---
 
@@ -21,18 +21,20 @@ tags: [itinerary, day01, sendai, arrival, gyutan]
 | **12:30 - 14:35** | 台北桃園機場 T1 報到、託運行李、登機出發 | 台北 (TPE) T1 | 提早 2 小時抵達機場 | - |
 | **14:35 - 18:45** | 飛行航程（台北 ➔ 仙台） | 航班直飛 | 航程約 3 小時 10 分 | 已計入機票 |
 | **18:45 - 19:40** | 降落入境、提取行李、開通 eSIM 上網 | 仙台機場 (SDJ) | 機場大廳直通鐵路月台 | - |
-| **19:45 - 20:10** | 搭乘「仙台機場 Access 線」前往市區 | 仙台機場 Access 鐵道 | 直通電車直達仙台站 (約 25 分) | ¥660 |
-| **20:15 - 20:45** | 飯店辦理 Check-in、卸放行李 | 仙台站周邊飯店 | 換上輕便保暖外套 | - |
-| **20:45 - 22:00** | 享用仙台代表名物：炭烤牛舌 / 芹菜鍋 | [[kb/spots/sendai_city/Sendai Gyutan Taka, 4 Chome-5-34 Ic|Sendai Gyutan Taka (牛舌 閣)]] 或 [[kb/spots/sendai_city/Serisoan Sendai-Ekimae, 仙台南町通ビル ２F |Serisoan 仙台南町通 (名物芹菜鍋)]] | 炭火厚切牛舌套餐 + 麥飯山藥泥 + 牛尾湯 | ¥2,800 - ¥3,500 |
-| **22:00 - 23:00** | 名掛丁商店街漫步、超商補給翌日飲水點心 | [[kb/spots/sendai_city/名掛丁商店街 2 Chome-1 Central, Aoba Ward|名掛丁商店街]] / 7-Eleven | 購買日本在地鮮奶、休足時間貼布 | ¥800 |
+| **19:45 - 20:10** | 搭乘「仙台機場 Access 線」直達仙台站 | 仙台機場 Access 鐵道 | 直通電車直達仙台站 (約 25 分，¥660，刷 Suica) | ¥660 |
+| **20:15 - 20:30** | 轉搭地下鐵南北線前往「勾當台公園站」 | 仙台地下鐵南北線 | 仙台站搭 1 站至「勾當台公園站」(3分鐘，¥210)，南1出口步行 4 分鐘 | ¥210 |
+| **20:30 - 20:50** | **HOTEL LiVEMAX Sendai Kokubuncho** 辦理 Check-in | [[kb/logistics/accommodations#night-1--night-2|HOTEL LiVEMAX Sendai Kokubuncho]] | 卸放行李，換上保暖外套，下樓即是國分町美食街 | - |
+| **20:50 - 22:30** | 國分町發祥名店：炭烤牛舌盛宴 / 居酒屋 | 味太助 本店 / 旨味太助 / 炭烤居酒屋 | 享用炭火厚切牛舌定食 + 麥飯山藥泥 + 熱騰騰牛尾湯與在地地酒 | ¥2,800 - ¥3,500 |
+| **22:30 - 23:15** | 定禪寺通夜色散策、超商補給飲水點心 | 定禪寺通林蔭道 / 國分町超商 | 感受定禪寺通夜間櫸樹林道，超商買在地鮮奶與點心 | ¥800 |
 
 ---
 
 ## 🚇 當日交通要點
-- **機場至市區**：於仙台機場 B1 月台直接刷 Apple Wallet Suica 感應進站，搭乘 Access 線至仙台站，免換車。
+- **機場至市區**：仙台機場站刷 Apple Wallet Suica 搭乘 Access 線至仙台站 (25分，¥660)。
+- **市區至國分町**：站內轉乘地下鐵南北線（泉中央行），搭 1 站至「勾當台公園站」(3分，¥210)，南 1 出口步行 4 分鐘直達飯店。
 
 ---
 
-## 💡 當日亮點與防雷提醒
-- **11 月氣候**：仙台 11 月中下旬晚間氣溫約 5°C - 8°C，出機場時務必穿上防風保暖大衣與圍巾。
-- **牛舌名店**：熱門牛舌店若逢客滿，可挑選仙台車站 3 樓「牛舌通 (牛たん通り)」各家分店備選。
+## 💡 當日亮點與提醒
+- **國分町美食優勢**：HOTEL LiVEMAX 位於宮城最熱鬧的餐飲街區，即便晚間 21:00 後抵達，周邊仍有大量高評價牛舌、拉麵與居酒屋營業，完全不用擔心餓肚子！
+- **氣候保暖**：11 月中下旬晚間氣溫約 5°C - 8°C，出門用餐務必穿上防風保暖外套。
