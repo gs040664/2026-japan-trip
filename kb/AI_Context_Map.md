@@ -60,10 +60,10 @@ graph LR
   - 景點：瑞鳳殿、青葉城跡、大崎八幡宮、定禪寺通夜景
   - 住宿：[[kb/logistics/accommodations#night-1--night-2|HOTEL LiVEMAX Sendai Kokubuncho]] (續住免搬行李)
 
-- **Day 03 田代島 (貓島) 探險 ➔ 傍晚直奔秋保名湯**：
-  - 交通：[[kb/logistics/transit_passes#day-3-仙台--石卷--田代島-貓島-輕裝探險--傍晚直奔秋保溫泉|JR 仙石東北線快速]] + 網地島線客船 + 宮城交通巴士
-  - 景點：仁斗田港聚落群貓、田代島貓神社、石卷漫畫街
-  - 住宿：[[kb/logistics/accommodations#night-3--night-4|仙台秋保温泉 篝火の湯 緑水亭]] (第 1 晚：篝火之湯 + 會席晚宴)
+- **Day 03 鹽竈水產市場 (勝手丼) ＋ 鹽竈神社 ➔ 提早入住秋保名湯**：
+  - 交通：[[kb/logistics/transit_passes#day-3-仙台--鹽竈水產市場--鹽竈神社--提早入住秋保溫泉綠水亭|JR 仙石線直達 (東鹽釜/本鹽釜)]] + 宮城交通巴士
+  - 景點：[[kb/spots/matsushima_shiogama/鹽釜水產市場 1 Chome-20-74 Shinhamacho, S|鹽釜水產物仲卸市場]]、[[kb/spots/matsushima_shiogama/鹽竈神社 1-1 Ichimoriyama, Shiogama, Mi|鹽竈神社・志波彥神社]]、榮太樓本店、浦霞酒造
+  - 住宿：[[kb/logistics/accommodations#night-3--night-4|仙台秋保温泉 篝火の湯 緑水亭]] (第 1 晚：提早入住萬坪庭園紅葉 + 篝火之湯 + 會席晚宴)
 
 - **Day 04 秋保溫泉深度度假 ➔ 名瀑工藝與酒廠**：
   - 交通：[[kb/logistics/transit_passes#day-4-秋保溫泉深度度假--磊磊峽--秋保大瀑布--nikka-宮城峽酒廠-連住綠水亭|秋保專線巴士]] + Nikka 接駁車
