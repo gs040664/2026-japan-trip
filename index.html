@@ -18,10 +18,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Leaflet Map CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css"/>
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=gsi1">
 </head>
 <body>
 
@@ -178,7 +178,7 @@
           <span class="d-theme">青葉城跡・瑞鳳殿</span>
         </button>
         <button class="day-btn" data-day="day3">
-          <span class="d-num">Day 3 ⭐</span>
+          <span class="d-num">Day 3</span>
           <span class="d-date">11/21 (六)</span>
           <span class="d-theme">鹽竈海鮮勝手丼 ➔ 宿：秋保綠水亭</span>
         </button>
@@ -214,6 +214,7 @@
             <span class="map-hint">點擊景點卡片即可在地圖中聚焦</span>
           </div>
           <div id="itinerary-day-map" class="day-map-frame"></div>
+          <p id="itinerary-day-map-status" class="map-status" role="status">載入地圖中。也可<a href="https://www.google.com/maps/search/?api=1&amp;query=Sendai%2C+Japan" target="_blank" rel="noopener">在 Google Maps 查看仙台周邊</a>。</p>
           <div class="map-legend">
             <span class="legend-item"><span class="dot dot-food"></span> 美食餐廳</span>
             <span class="legend-item"><span class="dot dot-spot"></span> 名勝/體驗</span>
@@ -261,7 +262,7 @@
           <div class="filter-group">
             <label><i class="fa-solid fa-filter"></i> 區域篩選：</label>
             <button class="map-filter-btn active" data-filter="all">全部 (All)</button>
-            <button class="map-filter-btn" data-filter="matsushima_shiogama">松島・鹽竈 ⭐</button>
+            <button class="map-filter-btn" data-filter="matsushima_shiogama">松島・鹽竈</button>
             <button class="map-filter-btn" data-filter="sendai_city">仙台市區</button>
             <button class="map-filter-btn" data-filter="akiu_nikka">秋保溫泉・宮城峽</button>
             <button class="map-filter-btn" data-filter="zao_shiroishi">藏王・白石・柴田</button>
@@ -273,6 +274,7 @@
           </div>
         </div>
         <div id="full-interactive-map" class="full-map-frame"></div>
+          <p id="full-interactive-map-status" class="map-status" role="status">載入地圖中。也可<a href="https://www.google.com/maps/search/?api=1&amp;query=Sendai%2C+Japan" target="_blank" rel="noopener">在 Google Maps 查看仙台周邊</a>。</p>
       </div>
     </section>
 
@@ -285,7 +287,7 @@
         </div>
         <div class="vault-filters">
           <button class="vault-btn active" data-vault-filter="all">全部 (<span id="count-all">0</span>)</button>
-          <button class="vault-btn" data-vault-filter="matsushima_shiogama">松島・鹽竈 (<span id="count-matsushima">0</span>) ⭐</button>
+          <button class="vault-btn" data-vault-filter="matsushima_shiogama">松島・鹽竈 (<span id="count-matsushima">0</span>)</button>
           <button class="vault-btn" data-vault-filter="sendai_city">仙台市區 (<span id="count-sendai">0</span>)</button>
           <button class="vault-btn" data-vault-filter="akiu_nikka">秋保・宮城峽 (<span id="count-akiu">0</span>)</button>
           <button class="vault-btn" data-vault-filter="zao_shiroishi">藏王・白石 (<span id="count-zao">0</span>)</button>
@@ -332,9 +334,9 @@
   </div>
 
   <!-- Leaflet Map JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
   
   <!-- App JS -->
-  <script src="app.js"></script>
+  <script src="app.js?v=gsi1"></script>
 </body>
 </html>

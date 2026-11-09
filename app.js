@@ -500,7 +500,8 @@ const ITINERARY_DATA = {
     morning: "出發準備", afternoon: "抵達仙台、入住", backups: ["定禪寺通", "仙台站牛舌通"],
     transitSummary: "18:45 抵仙台，搭機場線進市區。",
     items: [
-      stop("14:35–18:45", "transit", "桃園 → 仙台", "抵達後搭仙台機場線。航班時間採當地時間。"),
+      stop("14:35–18:45", "transit", "桃園 → 仙台", "航班時間採當地時間。"),
+      stop("抵達後", "transit", "仙台機場線 → 仙台站", "搭機場線進市區，再前往國分町。", 5),
       stop("晚餐", "food", "仙台牛舌", "時間充裕可吃牛たん料理 閣本店，或在仙台站用餐後入住。"),
       stop("15:00 起可入住", "stay", "LiVEMAX 國分町", "四人兩間，兩晚不含餐。")
     ]
@@ -590,7 +591,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDaySwitcher();
   initTripOverview();
   renderTimeline(currentDay);
-  if (typeof L !== "undefined") initDayMap();
+  initDayMap();
   renderSpotsVault("all");
   initCurrencyConverter();
   initParticles();
@@ -652,7 +653,7 @@ function initTabs() {
       
       if (tabKey === "map-view") {
         if (!fullMap) {
-          if (typeof L !== "undefined") initFullMap();
+          initFullMap();
         } else {
           setTimeout(() => fullMap.invalidateSize(), 200);
         }
@@ -816,20 +817,51 @@ function getCustomMarkerIcon(type, dayNumber) {
   });
 }
 
+function createTripMap(id, zoom) {
+  const status = document.getElementById(`${id}-status`);
+  const message = status.firstChild;
+  let map = null;
+  const showFailure = () => {
+    message.textContent = map ? "詳細圖磚暫時無法載入，目前顯示區域底圖。" : "地圖暫時無法載入。";
+    status.hidden = false;
+  };
+
+  if (typeof L === "undefined") {
+    showFailure();
+    return null;
+  }
+
+  map = L.map(id, { minZoom: 5, maxZoom: 18 })
+    .setView([38.2601, 140.8824], zoom);
+  // The zoom-10 overview is bundled so the map can render when a preview blocks remote tiles.
+  map.createPane("overview").style.zIndex = 190;
+  L.imageOverlay("assets/tohoku-overview.webp", [[37.71859033, 140.2734375], [38.82259098, 141.6796875]], {
+    pane: "overview",
+    alt: "仙台、秋保、松島地理院區域底圖",
+    attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html">國土地理院</a>'
+  }).addTo(map);
+
+  const tiles = L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+    maxNativeZoom: 18,
+    noWrap: true,
+    attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html">國土地理院</a>'
+  });
+  let loaded = false;
+  tiles.on("loading", () => { loaded = false; });
+  tiles.on("tileload", () => {
+    loaded = true;
+    status.hidden = true;
+  });
+  tiles.on("load", () => {
+    if (!loaded && !map.getContainer().querySelector(".leaflet-tile-loaded")) showFailure();
+  });
+  tiles.addTo(map);
+  return map;
+}
+
 function initDayMap() {
-  const mapElem = document.getElementById("itinerary-day-map");
-  if (!mapElem) return;
-  
-  dayMap = L.map('itinerary-day-map', {
-    zoomControl: true,
-    attributionControl: false
-  }).setView([38.2601, 140.8824], 11);
-  
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    subdomains: 'abcd'
-  }).addTo(dayMap);
-  
+  dayMap = createTripMap("itinerary-day-map", 11);
+  if (!dayMap) return;
   dayMarkersLayer = L.featureGroup().addTo(dayMap);
   updateDayMap("day1");
 }
@@ -899,19 +931,10 @@ function tripDayForSpot(spotId) {
 }
 
 function initFullMap() {
-  const fullMapElem = document.getElementById("full-interactive-map");
-  if (!fullMapElem) return;
-  
-  fullMap = L.map('full-interactive-map', {
-    zoomControl: true
-  }).setView([38.2601, 140.8824], 10);
-  
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    subdomains: 'abcd',
-    attribution: '© OpenStreetMap contributors, © CARTO'
-  }).addTo(fullMap);
-  
+  fullMap = createTripMap("full-interactive-map", 10);
+  if (!fullMap) return;
+  requestAnimationFrame(() => fullMap.invalidateSize());
+
   fullMarkersLayer = L.featureGroup().addTo(fullMap);
   renderFullMapMarkers("all");
   
