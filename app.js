@@ -577,6 +577,7 @@ function stop(time, type, title, desc, spotId = null, source = null) {
 let dayMap = null;
 let fullMap = null;
 let dayMarkersLayer = null;
+let dayRouteLayer = null;
 let fullMarkersLayer = null;
 let currentDay = "day1";
 let travelMode = "drive";
@@ -708,6 +709,7 @@ function initTripOverview() {
       travelMode = button.dataset.travelMode;
       modeButtons.forEach(option => option.setAttribute("aria-pressed", String(option === button)));
       renderTimeline(currentDay);
+      updateDayMap(currentDay);
     });
   });
 }
@@ -833,51 +835,116 @@ function createTripMap(id, zoom) {
 
   map = L.map(id, { minZoom: 5, maxZoom: 18 })
     .setView([38.2601, 140.8824], zoom);
-  // The zoom-10 overview is bundled so the map can render when a preview blocks remote tiles.
+  const attribution = '<a href="https://openfreemap.org/">OpenFreeMap</a> · <a href="https://openmaptiles.org/">© OpenMapTiles</a> · <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>';
   map.createPane("overview").style.zIndex = 190;
-  L.imageOverlay("assets/tohoku-overview.webp", [[37.71859033, 140.2734375], [38.82259098, 141.6796875]], {
+  L.imageOverlay("assets/tohoku-overview.webp?v=positron", [[37.71859033, 140.2734375], [38.82259098, 141.6796875]], {
     pane: "overview",
-    alt: "仙台、秋保、松島地理院區域底圖",
-    attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html">國土地理院</a>'
+    alt: "仙台、秋保、松島街道底圖",
+    attribution
   }).addTo(map);
 
-  const tiles = L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
-    maxNativeZoom: 18,
-    noWrap: true,
-    attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html">國土地理院</a>'
-  });
-  let loaded = false;
-  tiles.on("loading", () => { loaded = false; });
-  tiles.on("tileload", () => {
-    loaded = true;
-    status.hidden = true;
-  });
-  tiles.on("load", () => {
-    if (!loaded && !map.getContainer().querySelector(".leaflet-tile-loaded")) showFailure();
-  });
-  tiles.addTo(map);
+  if (typeof MaplibreGLLeaflet === "undefined") {
+    showFailure();
+    return map;
+  }
+
+  try {
+    const layer = MaplibreGLLeaflet.maplibreGL({
+      style: "https://tiles.openfreemap.org/styles/positron",
+      attributionControl: false
+    }).addTo(map);
+    const vectorMap = layer.getMaplibreMap();
+    const canvas = vectorMap.getCanvas();
+    canvas.style.opacity = "0";
+    let failed = false;
+    vectorMap.on("error", () => {
+      if (canvas.style.opacity === "0") {
+        failed = true;
+        showFailure();
+      }
+    });
+    vectorMap.once("idle", () => {
+      if (!failed) {
+        canvas.style.opacity = "1";
+        status.hidden = true;
+      }
+    });
+  } catch {
+    showFailure();
+  }
   return map;
 }
 
 function initDayMap() {
   dayMap = createTripMap("itinerary-day-map", 11);
   if (!dayMap) return;
+  dayRouteLayer = L.layerGroup().addTo(dayMap);
   dayMarkersLayer = L.featureGroup().addTo(dayMap);
   updateDayMap("day1");
+}
+
+function directionsUrl(points, mode) {
+  const params = new URLSearchParams({
+    api: "1",
+    origin: points[0][3],
+    destination: points.at(-1)[3],
+    travelmode: mode
+  });
+  if (points.length > 2) {
+    params.set("waypoints", points.slice(1, -1).map(point => point[3]).join("|"));
+  }
+  return `https://www.google.com/maps/dir/?${params}`;
+}
+
+function renderDayRoute(dayKey) {
+  const route = TRIP_MAP_ROUTES[dayKey];
+  const driving = travelMode === "drive" ? route.drive : null;
+  const keys = driving ? driving.stops : route.transit;
+  const points = keys.map(key => TRIP_ROUTE_POINTS[key]);
+  const coordinates = driving ? driving.line : points.map(([, lat, lng]) => [lat, lng]);
+  const pathStyle = { interactive: false, lineCap: "round" };
+  const dashArray = driving ? undefined : "7 9";
+  L.polyline(coordinates, { ...pathStyle, color: "#fff", weight: 8, opacity: 0.9, dashArray }).addTo(dayRouteLayer);
+  L.polyline(coordinates, { ...pathStyle, color: "#1769e0", weight: 4, dashArray, className: "trip-route-line" }).addTo(dayRouteLayer);
+
+  const order = new Map();
+  keys.forEach((key, index) => order.set(key, [...(order.get(key) ?? []), index + 1]));
+  for (const [key, numbers] of order) {
+    const [name, lat, lng, query, spotId] = TRIP_ROUTE_POINTS[key];
+    const label = numbers.join("・");
+    const icon = L.divIcon({ className: "trip-route-pin", html: label, iconSize: [32, 32], iconAnchor: [16, 16] });
+    const marker = L.marker([lat, lng], { icon, title: `${label} ${name}`, alt: `${label} ${name}` });
+    const url = `https://www.google.com/maps/search/?${new URLSearchParams({ api: "1", query })}`;
+    marker.bindPopup(`<strong>${label}　${name}</strong><br><a href="${url}" target="_blank" rel="noopener">在 Google Maps 開啟</a>`);
+    marker.spotId = spotId;
+    dayMarkersLayer.addLayer(marker);
+  }
+
+  const summary = document.getElementById("day-route-summary");
+  const items = points.map((point, index) => {
+    const next = points[index + 1];
+    const link = !driving && next
+      ? ` <a href="${directionsUrl([point, next], "transit")}" target="_blank" rel="noopener">查到下一站</a>`
+      : "";
+    return `<li>${point[0]}${link}</li>`;
+  }).join("");
+  summary.innerHTML = `<p class="route-key ${driving ? "" : "route-key-transit"}">${driving ? "自駕道路參考線" : "大眾交通與步行順序示意"}</p>
+    <ol>${items}</ol>
+    ${driving ? `<a href="${directionsUrl(points, "driving")}" target="_blank" rel="noopener">用 Google Maps 開啟自駕路線</a>
+      <small>道路資料 © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>，以即時導航為準。</small>` : ""}`;
+  return { points, coordinates };
 }
 
 function updateDayMap(dayKey) {
   if (!dayMap || !dayMarkersLayer) return;
   dayMarkersLayer.clearLayers();
+  dayRouteLayer.clearLayers();
+  const { points, coordinates } = renderDayRoute(dayKey);
   
   const dayNum = Number(dayKey.slice(3));
   const spotIds = new Set(ITINERARY_DATA[dayKey].items.map(item => item.spotId));
-  const daySpots = SPOTS_DATA.filter(spot => spotIds.has(spot.id));
-  
-  if (daySpots.length === 0) {
-    dayMap.setView([38.2601, 140.8824], 11);
-    return;
-  }
+  const routeIds = new Set(points.map(point => point[4]));
+  const daySpots = SPOTS_DATA.filter(spot => spotIds.has(spot.id) && !routeIds.has(spot.id));
   
   daySpots.forEach(spot => {
     const icon = getCustomMarkerIcon(spot.type, dayNum);
@@ -899,22 +966,15 @@ function updateDayMap(dayKey) {
     dayMarkersLayer.addLayer(marker);
   });
   
-  if (dayMarkersLayer.getLayers().length > 0) {
-    dayMap.fitBounds(dayMarkersLayer.getBounds(), { padding: [40, 40], maxZoom: 14 });
-  }
+  dayMap.fitBounds(dayMarkersLayer.getBounds().extend(L.latLngBounds(coordinates)), { padding: [36, 36], maxZoom: 14 });
 }
 
 function focusSpotOnMap(spotId) {
-  const spot = SPOTS_DATA.find(s => s.id === spotId);
-  if (!spot || !dayMap) return;
-  
-  dayMap.flyTo([spot.lat, spot.lng], 14, { duration: 1.2 });
-  
-  dayMarkersLayer.eachLayer(layer => {
-    if (layer.spotId === spotId) {
-      layer.openPopup();
-    }
-  });
+  if (!dayMap) return;
+  const marker = dayMarkersLayer.getLayers().find(layer => layer.spotId === spotId);
+  if (!marker) return;
+  dayMap.flyTo(marker.getLatLng(), 14, { duration: 1.2 });
+  marker.openPopup();
 }
 
 function handleTimelineItemClick(spotId) {

@@ -1636,3 +1636,35 @@ body {
 .trip-guide h3 { font-size: 1rem; }
 .trip-guide p { margin: 8px 0; }
 .trip-guide a { color: #f2be7c; text-decoration: underline; }
+
+.day-map-frame, .full-map-frame { background: #e9eef1; }
+.trip-route-pin {
+  display: grid;
+  place-items: center;
+  background: #1769e0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px #183b6f66;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+.day-route-summary, .map-status { padding: 10px 14px; font-size: .82rem; }
+.day-route-summary a, .map-status a { color: #9ac6ff; text-decoration: underline; }
+.day-route-summary ol { padding-left: 1.5rem; margin: 7px 0; }
+.day-route-summary li { margin: 3px 0; }
+.day-route-summary li a { margin-left: 5px; }
+.day-route-summary small { display: block; margin-top: 4px; color: var(--text-muted); }
+.route-key::before {
+  display: inline-block;
+  width: 22px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-top: 3px solid #76aaff;
+  content: "";
+}
+.route-key-transit::before { border-top-style: dashed; }
+
+@media (max-width: 768px) {
+  .itinerary-map-sidebar { grid-row: 1; }
+}

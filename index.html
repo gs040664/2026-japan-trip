@@ -19,9 +19,10 @@
   
   <!-- Leaflet Map CSS -->
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css"/>
+  <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=gsi1">
+  <link rel="stylesheet" href="style.css?v=routes1">
 </head>
 <body>
 
@@ -210,11 +211,12 @@
         <!-- Right: Synchronized Mini Interactive Map -->
         <div class="itinerary-map-sidebar">
           <div class="map-sidebar-header">
-            <span class="sidebar-title"><i class="fa-solid fa-map-location-dot text-gold"></i> 當日景點地圖分佈</span>
-            <span class="map-hint">點擊景點卡片即可在地圖中聚焦</span>
+            <span class="sidebar-title"><i class="fa-solid fa-map-location-dot text-gold"></i> 當日行程路線</span>
+            <span class="map-hint">按圖釘查看地點，交通模式會切換路線</span>
           </div>
           <div id="itinerary-day-map" class="day-map-frame"></div>
           <p id="itinerary-day-map-status" class="map-status" role="status">載入地圖中。也可<a href="https://www.google.com/maps/search/?api=1&amp;query=Sendai%2C+Japan" target="_blank" rel="noopener">在 Google Maps 查看仙台周邊</a>。</p>
+          <div id="day-route-summary" class="day-route-summary"></div>
           <div class="map-legend">
             <span class="legend-item"><span class="dot dot-food"></span> 美食餐廳</span>
             <span class="legend-item"><span class="dot dot-spot"></span> 名勝/體驗</span>
@@ -335,8 +337,11 @@
 
   <!-- Leaflet Map JS -->
   <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/maplibre/maplibre-gl.js"></script>
+  <script src="vendor/maplibre/leaflet-maplibre-gl.js"></script>
   
   <!-- App JS -->
-  <script src="app.js?v=gsi1"></script>
+  <script src="assets/trip-routes.js"></script>
+  <script src="app.js?v=routes1"></script>
 </body>
 </html>
