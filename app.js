@@ -937,6 +937,7 @@ function renderDayRoute(dayKey) {
 
 function updateDayMap(dayKey) {
   if (!dayMap || !dayMarkersLayer) return;
+  dayMap.stop();
   dayMarkersLayer.clearLayers();
   dayRouteLayer.clearLayers();
   const { points, coordinates } = renderDayRoute(dayKey);
@@ -966,7 +967,7 @@ function updateDayMap(dayKey) {
     dayMarkersLayer.addLayer(marker);
   });
   
-  dayMap.fitBounds(dayMarkersLayer.getBounds().extend(L.latLngBounds(coordinates)), { padding: [36, 36], maxZoom: 14 });
+  dayMap.fitBounds(dayMarkersLayer.getBounds().extend(L.latLngBounds(coordinates)), { padding: [36, 36], maxZoom: 14, animate: false });
 }
 
 function focusSpotOnMap(spotId) {
