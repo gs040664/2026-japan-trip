@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#0f121a">
@@ -60,7 +60,7 @@
         </div>
         <h1 class="hero-title">日本東北秋季自由行・行程與住宿規劃</h1>
         <p class="hero-desc">
-          探索伊達政宗歷史古都・<strong>鹽竈水產市場勝手丼與千年神社</strong>・日本三景松島灣・<strong>秋保溫泉綠水亭篝火名湯</strong>與極致仙台牛舌饗宴。（全行程區域集中規劃，杜絕折返跑，大眾交通 JR + 觀光巴士導引）
+          白天看仙台與松島紅葉，住兩晚秋保溫泉，最後一晚到松島超市採買、回木屋自炊。每天上午、下午各安排一個主點，可切換分段自駕與大眾交通。
         </p>
 
         <!-- Countdown Timer -->
@@ -137,25 +137,34 @@
     <!-- Main Navigation Tabs -->
     <nav class="main-tabs">
       <button class="tab-btn active" data-tab="itinerary">
-        <i class="fa-solid fa-route"></i> 每日行程表 (Itinerary)
+        <i class="fa-solid fa-route"></i> 六天行程
       </button>
       <button class="tab-btn" data-tab="hotels-stay">
-        <i class="fa-solid fa-hotel"></i> 每日精選住宿 (Hotels & Minshuku) 🏨
+        <i class="fa-solid fa-hotel"></i> 住宿與自炊
       </button>
       <button class="tab-btn" data-tab="transit-guide">
-        <i class="fa-solid fa-train-subway"></i> 全大眾交通指南 (Transit Guide)
+        <i class="fa-solid fa-train-subway"></i> 交通與猊鼻溪
       </button>
       <button class="tab-btn" data-tab="map-view">
-        <i class="fa-solid fa-map-location-dot"></i> 全域景點地圖 (Interactive Map)
+        <i class="fa-solid fa-map-location-dot"></i> 景點地圖
       </button>
       <button class="tab-btn" data-tab="spots-vault">
-        <i class="fa-solid fa-compass"></i> Google 收藏景點庫 (50處)
+        <i class="fa-solid fa-compass"></i> 收藏景點
       </button>
     </nav>
 
     <!-- TAB 1: ITINERARY (DEFAULT) -->
     <main id="tab-itinerary" class="tab-content active">
       
+      <section class="trip-overview-section" aria-labelledby="trip-overview-title">
+        <h2 id="trip-overview-title">六天速覽</h2>
+        <div id="trip-overview" class="trip-overview-grid"></div>
+      </section>
+      <div class="trip-mode" role="group" aria-label="交通模式">
+        <span>每日交通</span>
+        <button type="button" data-travel-mode="drive" aria-pressed="true">分段自駕</button>
+        <button type="button" data-travel-mode="transit" aria-pressed="false">大眾交通</button>
+      </div>
       <!-- Day Switcher Sub-tabs -->
       <div class="day-switcher">
         <button class="day-btn active" data-day="day1">
@@ -166,7 +175,7 @@
         <button class="day-btn" data-day="day2">
           <span class="d-num">Day 2</span>
           <span class="d-date">11/20 (五)</span>
-          <span class="d-theme">仙台朝市・歷史 (續住國分町)</span>
+          <span class="d-theme">青葉城跡・瑞鳳殿</span>
         </button>
         <button class="day-btn" data-day="day3">
           <span class="d-num">Day 3 ⭐</span>
@@ -176,17 +185,17 @@
         <button class="day-btn" data-day="day4">
           <span class="d-num">Day 4</span>
           <span class="d-date">11/22 (日)</span>
-          <span class="d-theme">秋保名瀑・Nikka (連住綠水亭)</span>
+          <span class="d-theme">磊磊峽・秋保大瀑布</span>
         </button>
         <button class="day-btn" data-day="day5">
           <span class="d-num">Day 5</span>
           <span class="d-date">11/23 (一)</span>
-          <span class="d-theme">松島遊船・宿：松島包棟木屋自炊</span>
+          <span class="d-theme">円通院・木屋自炊</span>
         </button>
         <button class="day-btn" data-day="day6">
           <span class="d-num">Day 6</span>
           <span class="d-date">11/24 (二)</span>
-          <span class="d-theme">松島晨光・站前採買返台</span>
+          <span class="d-theme">木屋退房・返台</span>
         </button>
       </div>
 
@@ -215,225 +224,33 @@
       </div>
     </main>
 
-    <!-- TAB 2: HOTELS & MINSHUKU (DEDICATED ACCOMMODATION TAB) -->
     <section id="tab-hotels-stay" class="tab-content">
-      <div class="dashboard-card">
-        <div class="card-header">
-          <h3><i class="fa-solid fa-hotel"></i> 2026 日本東北 5 晚精選住宿推薦與配置方案 (4人同行)</h3>
-          <span class="badge-tag">兼具大眾交通・貓島深度體驗・頂級名湯享受</span>
+      <div class="dashboard-card trip-guide">
+        <h2>五晚住宿</h2>
+        <div class="trip-guide-grid">
+          <article><h3>仙台國分町 LiVEMAX</h3><p>11/19 15:00 起入住，11/21 05:00–10:00 退房。四人兩間，兩晚不含餐。</p></article>
+          <article><h3>秋保溫泉綠水亭</h3><p>11/21 15:00–18:00 入住，11/23 10:00 前退房。四人一間，兩晚含早餐。晚餐另排，住宿有免費停車。</p></article>
+          <article><h3>Matsushima hill bungalow</h3><p>11/23 15:00–19:00 入住，11/24 10:00 前退房。四人包棟一晚，不含餐。停車進場依房東資訊。</p></article>
         </div>
-
-        <div class="hotels-grid">
-          
-          <!-- Hotel Card 1: Night 1 & 2 Kokubuncho -->
-          <div class="hotel-card">
-            <div class="hotel-card-badge">Night 1 & Night 2 ｜ 11/19 (四) ~ 11/20 (五) 🌟 連住 2 晚・國分町美食區</div>
-            <div class="hotel-img-placeholder hotel-sendai">
-              <span class="hotel-type-tag"><i class="fa-solid fa-utensils"></i> 國分町核心・Booking.com 可訂</span>
-            </div>
-            <div class="hotel-content">
-              <h4>HOTEL LiVEMAX Sendai Kokubuncho</h4>
-              <p class="hotel-subtitle">（ホテルリブマックス仙台国分町）</p>
-              <div class="hotel-features">
-                <span class="feat-tag"><i class="fa-solid fa-train-subway"></i> 勾當台公園站 4 分鐘</span>
-                <span class="feat-tag"><i class="fa-solid fa-beer-mug-empty"></i> 下樓即是國分町美食</span>
-                <span class="feat-tag"><i class="fa-solid fa-suitcase"></i> 連續 2 晚免搬行李</span>
-              </div>
-              <p class="hotel-desc">
-                座落於東北最大美食夜生活商圈「國分町」正核心！從仙台站搭地下鐵南北線僅 1 站（3 分鐘），下樓即是炭烤牛舌名店、在地居酒屋與定禪寺通林蔭道；連住 2 晚輕鬆省心。
-              </p>
-              <div class="hotel-footer">
-                <span class="hotel-price">預估 ¥18,000 - ¥24,000 / 晚 (4人)</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=HOTEL+LiVEMAX+Sendai+Kokubuncho" target="_blank" class="mini-btn">
-                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hotel Card 2: Night 3 & 4 Akiu Onsen Ryokusuitei (2 Nights Consecutive) -->
-          <div class="hotel-card">
-            <div class="hotel-card-badge onsen-badge">Night 3 & Night 4 ｜ 11/21 (六) ~ 11/22 (日) ♨️ 奧州名湯連續 2 晚・篝火之湯</div>
-            <div class="hotel-img-placeholder hotel-akiu">
-              <span class="hotel-type-tag"><i class="fa-solid fa-fire-flame-curved"></i> 篝火露天名湯・懷石會席</span>
-            </div>
-            <div class="hotel-content">
-              <h4>仙台秋保温泉 篝火の湯 緑水亭 (Ryokusuitei)</h4>
-              <p class="hotel-subtitle">🌟 <strong>鹽竈散策後提早入住名湯！連住 2 晚一泊二食會席饗宴</strong></p>
-              <div class="hotel-features">
-                <span class="feat-tag"><i class="fa-solid fa-fire"></i> 夕暮篝火露天風呂</span>
-                <span class="feat-tag"><i class="fa-solid fa-tree"></i> 萬坪日式山林庭園</span>
-                <span class="feat-tag"><i class="fa-solid fa-utensils"></i> 宮城山海時令會席</span>
-              </div>
-              <p class="hotel-desc">
-                Day 3 鹽竈海鮮古剎散策後約 16:10 提早入住名宿，沉浸在池畔點燃溫暖篝火的「篝火之湯」露天風呂！連住兩晚漫步萬坪日式庭園賞楓，品嚐精緻黑毛和牛懷石會席，徹底釋放旅行疲憊。
-              </p>
-              <div class="hotel-footer">
-                <span class="hotel-price">預估 ¥68,000 - ¥85,000 / 晚 (含4人一泊二食)</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Sendai+Akiu+Onsen+Ryokusuitei" target="_blank" class="mini-btn">
-                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hotel Card 3: Featured Shiogama Day Trip -->
-          <div class="hotel-card featured-cat-card">
-            <div class="hotel-card-badge cat-badge"><i class="fa-solid fa-fish"></i> Day 3 ｜ 11/21 (六) 海鮮古剎亮點 ➔ 提早入住秋保</div>
-            <div class="hotel-img-placeholder hotel-tashiro">
-              <span class="hotel-type-tag"><i class="fa-solid fa-bowl-rice"></i> 鹽釜水產市場・勝手丼</span>
-            </div>
-            <div class="hotel-content">
-              <h4>鹽竈水產市場 (勝手丼) ＆ 奧州一宮鹽竈神社</h4>
-              <p class="hotel-subtitle">JR 仙石線直達・悠閒散策 ｜ <strong>午後直奔秋保綠水亭名湯</strong></p>
-              <div class="hotel-features">
-                <span class="feat-tag"><i class="fa-solid fa-bowl-food"></i> DIY 自組海鮮勝手丼</span>
-                <span class="feat-tag"><i class="fa-solid fa-torii-gate"></i> 1200年神社古木紅葉</span>
-                <span class="feat-tag"><i class="fa-solid fa-hot-tub-person"></i> 提早享受秋保名湯</span>
-              </div>
-              <p class="hotel-desc">
-                🌟 <strong>三陸海鮮與信仰名剎巡禮！</strong> 上午搭電車至東鹽釜，在水產市場挑選現剖生黑鮪魚、生海膽自組「My海鮮丼」（備有炭烤熟食區滿足不吃生食旅伴）；中午參拜鹽竈神社並漫步老街甜點，15:15 搭巴士直奔秋保綠水亭提早辦理入住！
-              </p>
-              <div class="hotel-note-box">
-                <i class="fa-solid fa-circle-info"></i> 備忘：大行李早晨寄放仙台站大型置物櫃，無須趕船壓力，全體旅伴 08:30 再從容退房出發！
-              </div>
-              <div class="hotel-footer">
-                <span class="hotel-price">仙石線電車 ¥330 / 單程</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=%E9%B9%BD%E9%87%9C%E6%B0%B4%E7%94%A2%E5%B8%82%E5%A0%B4" target="_blank" class="mini-btn">
-                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hotel Card 4: Night 5 Matsushima Hill Bungalow -->
-          <div class="hotel-card">
-            <div class="hotel-card-badge">Night 5 ｜ 11/23 (一) 松島包棟木屋・超市採買自炊</div>
-            <div class="hotel-img-placeholder hotel-vista">
-              <span class="hotel-type-tag"><i class="fa-solid fa-house-chimney"></i> 私人包棟木屋・附完整廚房</span>
-            </div>
-            <div class="hotel-content">
-              <h4>Matsushima hill bungalow</h4>
-              <p class="hotel-subtitle">🌲 <strong>松島包棟私人木屋 ｜ 附近有平價大型超市</strong></p>
-              <div class="hotel-features">
-                <span class="feat-tag"><i class="fa-solid fa-kitchen-set"></i> 完整廚房設備</span>
-                <span class="feat-tag"><i class="fa-solid fa-cart-shopping"></i> The Big 松島店超市採買</span>
-                <span class="feat-tag"><i class="fa-solid fa-users"></i> 4人獨棟歡聚無拘束</span>
-              </div>
-              <p class="hotel-desc">
-                松島灣遊船後入住私人包棟木屋！搭車前往附近的「The Big 松島店 (ザ・ビッグ 松島店)」大採購宮城霜降黑毛和牛片、生蠔與生魚片拼盤，回木屋廚房齊心自煮和牛火鍋，享受專屬私密度假之夜！
-              </p>
-              <div class="hotel-footer">
-                <span class="hotel-price">預估 ¥24,000 - ¥30,000 / 晚 (整棟4人)</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Matsushima+hill+bungalow" target="_blank" class="mini-btn">
-                  <i class="fa-solid fa-map-location-dot"></i> 地圖查看
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <h2>11/23 松島自炊</h2>
+        <p>約 15:10 離開松島海岸，15:20–15:50 去 <a href="https://www.acoop-east-t.jp/store/list/store_52.html">A&amp;COOP 松島店</a>，16:00–16:30 入住。可買肉片、白菜、菇類、豆腐、烏龍麵與湯底，也一起買隔天早餐。鍋具以房東資訊為準，想簡單吃可選熟食。</p>
+        <p>大眾交通版可向 <a href="https://matsushima.0152.jp/">松島町第一交通</a> 詢問四人及行李配車、超市停靠和隔日接車。</p>
       </div>
     </section>
 
-    <!-- TAB 3: TRANSIT GUIDE -->
     <section id="tab-transit-guide" class="tab-content">
-      <div class="dashboard-card">
-        <div class="card-header">
-          <h3><i class="fa-solid fa-train-subway"></i> 2026 日本東北（仙台・鹽竈・松島・秋保名湯）大眾交通指南</h3>
-          <span class="badge-tag">全程大眾交通為主</span>
-        </div>
-
-        <div class="transit-guide-grid">
-          <!-- Transit Card 1: Shiogama -->
-          <div class="transit-card highlight-border">
-            <div class="transit-card-header">
-              <span class="transit-badge-icon"><i class="fa-solid fa-fish"></i></span>
-              <div>
-                <h4>【🌟 必訪重點】鹽竈水產市場 (勝手丼) + 鹽竈神社 (JR 仙石線直達)</h4>
-                <span class="transit-sub">仙台站 ➔ 東鹽釜站 ➔ 水產市場 ➔ 鹽竈神社 ➔ 本鹽釜站 ➔ 仙台站</span>
-              </div>
-            </div>
-            <div class="transit-card-body">
-              <ol class="transit-step-list">
-                <li><strong>JR 仙石線（普通）</strong>：09:10 自 JR 仙台站地下月台出發 ➔ 09:41 抵達 JR 東鹽釜站（車程 31 分鐘，單程 ¥330，直接刷 Apple Pay Suica）。</li>
-                <li><strong>前往水產市場</strong>：出 JR 東鹽釜站步行約 15 分鐘（或站前排班計程車 3 分鐘約 ¥600/4人）抵達「鹽釜水產物仲卸市場」。</li>
-                <li><strong>勝手丼體驗與老街</strong>：自組三陸海鮮勝手丼（或炭烤海味熟食）；搭計程車 7 分鐘（約 ¥1,000/4人）參拜千年名剎「鹽竈神社」，漫步表參道品嚐「榮太樓生銅鑼燒」。</li>
-                <li><strong>回程與銜接溫泉</strong>：步行 12 分鐘至「JR 本鹽釜站」，13:55 搭仙石線直達仙台站 (28分，¥330)，取行李後搭 15:15 巴士直奔秋保綠水亭。</li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- Transit Card 2: Sendai Airport -->
-          <div class="transit-card">
-            <div class="transit-card-header">
-              <span class="transit-badge-icon"><i class="fa-solid fa-plane"></i></span>
-              <div>
-                <h4>仙台機場 Access 線 (Sendai Airport Line)</h4>
-                <span class="transit-sub">仙台機場 ↔ JR 仙台站直達電車</span>
-              </div>
-            </div>
-            <div class="transit-card-body">
-              <p>從機場航廈 B1 月台直通，每小時約 2-3 班直達電車，車程僅需 25 分鐘，單程 ¥660，支援 Suica / PASMO / Apple Pay 直接感應進出。</p>
-            </div>
-          </div>
-
-          <!-- Transit Card 3: Loople Sendai -->
-          <div class="transit-card">
-            <div class="transit-card-header">
-              <span class="transit-badge-icon"><i class="fa-solid fa-bus"></i></span>
-              <div>
-                <h4>るーぷる仙台 (Loople Sendai) 觀光循環巴士</h4>
-                <span class="transit-sub">市區古蹟名勝單向循環</span>
-              </div>
-            </div>
-            <div class="transit-card-body">
-              <p>乘車處：仙台站西口巴士總站 <strong>16 號月台</strong>。每 20 分鐘一班，串聯瑞鳳殿、青葉城跡、大崎八幡宮。推薦購買一日券 (¥630)，出示享門票折抵。</p>
-            </div>
-          </div>
-
-          <!-- Transit Card 4: Matsushima & Shiogama -->
-          <div class="transit-card">
-            <div class="transit-card-header">
-              <span class="transit-badge-icon"><i class="fa-solid fa-water"></i></span>
-              <div>
-                <h4>JR 仙石線 (松島・鹽竈海線)</h4>
-                <span class="transit-sub">仙台 ➔ 東鹽釜 (市場) ➔ 松島海岸 (日本三景)</span>
-              </div>
-            </div>
-            <div class="transit-card-body">
-              <p>搭乘 JR 仙石線至「東鹽釜站」(32分，¥330) 步行至水產市場；後續自「本鹽釜站」搭車至「松島海岸站」(10分，¥200) 直達松島灣，全段可刷 Suica。</p>
-            </div>
-          </div>
-
-          <!-- Transit Card 5: Akiu Otaki & Craft Village -->
-          <div class="transit-card">
-            <div class="transit-card-header">
-              <span class="transit-badge-icon"><i class="fa-solid fa-water"></i></span>
-              <div>
-                <h4>秋保大瀑布專線巴士 (日本三大名瀑) & 工藝之里</h4>
-                <span class="transit-sub">秋保湯元 ↔ 秋保大瀑布 ↔ 傳統工藝之里</span>
-              </div>
-            </div>
-            <div class="transit-card-body">
-              <p>自秋保溫泉湯元搭乘秋保大瀑布專線巴士至「秋保大滝站」(20分，¥460)，欣賞落差 55 公尺壯麗瀑布；回程順遊傳統工藝之里手繪木芥子與森林窯烤披薩。</p>
-            </div>
-          </div>
-
-          <!-- Transit Card 6: Akiu & Nikka -->
-          <div class="transit-card">
-            <div class="transit-card-header">
-              <span class="transit-badge-icon"><i class="fa-solid fa-hot-tub-person"></i></span>
-              <div>
-                <h4>宮城交通巴士 (秋保) & JR 仙山線 (宮城峽酒廠)</h4>
-                <span class="transit-sub">秋保溫泉巴士 + 作並站酒廠免費接駁</span>
-              </div>
-            </div>
-            <div class="transit-card-body">
-              <p>仙台站西口 8 號月台搭宮城交通巴士直達秋保溫泉 (50分，¥860)；前往 Nikka 威士忌酒廠搭 JR 仙山線至「作並站」(40分，¥510)，站前有酒廠免費接駁車。</p>
-            </div>
-          </div>
-        </div>
+      <div class="dashboard-card trip-guide">
+        <h2>分段自駕</h2>
+        <p>11/21 約 08:30 仙台站東口取車，11/24 約 15:30–16:00 到仙台機場門市還車。四人各有大行李可先看 Noah／Voxy 級距。租期超過 72 小時，以實際取還時刻詢價，確認異地還車、免責補償與 ETC 卡。持台灣駕照需帶正本、正式日文譯本及護照。</p>
+        <p><a href="https://store.nipponrentacar.co.jp/b/nrs/info/710170/">仙台站取車</a> ・ <a href="https://store.nipponrentacar.co.jp/b/nrs/info/710228/">仙台機場還車</a> ・ <a href="https://www.thb.gov.tw/cp.aspx?n=251">駕照文件</a> ・ <a href="https://www.pref.miyagi.jp/soshiki/mts-park/">松島停車與壅塞</a></p>
+        <h2>大眾交通</h2>
+        <p>11/21 15:00 仙台站東口搭綠水亭去程接駁，11/23 10:00 從旅館回仙台站，兩段各於前日 15:00 前預約。11/23 接 11:10 JR 仙石線。</p>
+        <p><a href="https://www.ryokusuitei.co.jp/access/">綠水亭接駁</a> ・ <a href="https://timetables.jreast.co.jp/2611/train/130/130821.html">11/23 仙石線</a></p>
+        <h2>11/20 猊鼻溪整日替換</h2>
+        <p>想搭船可用猊鼻溪替換仙台市區。11/8 已有落葉回報，紅葉優先可留瑞鳳殿。12:00 船班約 90 分鐘，成人 ¥2,000，依天候及船公司當天營運。</p>
+        <p><strong>開車</strong>　09:00 左右從仙台出發，單程抓兩小時，搭完船回仙台用餐。</p>
+        <p><strong>JR</strong>　08:50 仙台 → 09:21 一關，10:16 → 10:51 猊鼻溪。15:08 猊鼻溪 → 15:40 一關，16:51 → 17:23 仙台。</p>
+        <p><a href="https://www.ichitabi.jp/spot/data.php?p=1">一關乘船資訊</a> ・ <a href="https://koyo.walkerplus.com/detail/ar0203e12894/data.html">猊鼻溪葉況</a></p>
       </div>
     </section>
 

@@ -1607,3 +1607,32 @@ body {
   .hero-title, .timeline-card h3, .card-header h3, .hotel-content h4 { color: #000 !important; }
   .itinerary-split-layout { display: block !important; }
 }
+
+.trip-overview-section { margin: 0 0 24px; }
+.trip-overview-section h2, .trip-guide h2 { font-size: 1.25rem; margin: 0 0 12px; }
+.trip-overview-grid, .trip-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 10px;
+}
+.trip-overview-card, .trip-mode button, .trip-guide article {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font: inherit;
+}
+.trip-overview-card { text-align: left; cursor: pointer; }
+.trip-overview-card strong, .trip-overview-card span { display: block; }
+.trip-overview-card span { color: var(--text-muted); font-size: .86rem; margin-top: 3px; }
+.trip-overview-card:hover, .trip-mode button[aria-pressed="true"] { border-color: var(--primary-red); }
+.trip-mode { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
+.trip-mode button { padding: 6px 12px; cursor: pointer; }
+.trip-mode button[aria-pressed="true"] { background: var(--primary-red-glow); }
+.trip-backups { margin: 0 0 16px; color: var(--text-muted); }
+.trip-guide { line-height: 1.7; }
+.trip-guide h2:not(:first-child) { margin-top: 22px; }
+.trip-guide h3 { font-size: 1rem; }
+.trip-guide p { margin: 8px 0; }
+.trip-guide a { color: #f2be7c; text-decoration: underline; }

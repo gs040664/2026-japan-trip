@@ -18,6 +18,10 @@ updated: 2026-08-29
 
 ---
 
+## 2026-11-09 精簡重排草案
+
+- [[Sendai_202611_Replan_Draft|六天精簡版、住宿、餐廳、紅葉、猊鼻溪與分段自駕]]
+
 ## 🔗 詳細單日行程筆記連結
 - [[Day01_Arrival_Sendai|Day 1：抵達仙台 ➔ 國分町美食與宿 LiVEMAX]]
 - [[Day02_Sendai_History_Culture|Day 2：仙台市區歷史與文化名勝巡禮 (續住國分町)]]
