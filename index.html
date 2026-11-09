@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f121a">
+  <title>2026 日本東北秋季自由行・仙台・鹽竈・松島・秋保名湯 6天5夜行程與住宿規劃</title>
+  <meta name="description" content="2026年11月19日~11月24日 台北往返仙台 6天5夜自由行全攻略，包含鹽竈水產市場勝手丼、鹽竈神社、秋保溫泉綠水亭篝火名湯、松島包棟木屋自炊、大眾交通與景點地圖分佈。">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css"/>
+  <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css?v=geometry1">
+</head>
+<body>
+
+  <!-- Background Ambient Glow & Foliage Canvas -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+  <canvas id="foliage-canvas"></canvas>
+
+  <div class="app-container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="nav-brand">
+        <span class="brand-icon">🍁</span>
+        <div class="brand-text">
+          <span class="brand-title">TOHOKU 2026</span>
+          <span class="brand-subtitle">仙台・鹽竈・松島・秋保名湯 6天5夜自由行</span>
+        </div>
+      </div>
+      
+      <div class="nav-actions">
+        <button id="btn-toggle-particles" class="nav-btn" title="切換楓葉特效">
+          <i class="fa-solid fa-leaf"></i> <span>動態楓葉</span>
+        </button>
+        <button id="btn-print-handbook" class="nav-btn btn-primary" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> <span>列印/匯出 PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-calendar-check"></i> 2026.11.19 (Thu) - 11.24 (Tue) ｜ 6 天 5 夜
+        </div>
+        <h1 class="hero-title">日本東北秋季自由行・行程與住宿規劃</h1>
+        <p class="hero-desc">
+          白天看仙台與松島紅葉，住兩晚秋保溫泉，最後一晚到松島超市採買、回木屋自炊。每天上午、下午各安排一個主點，可切換分段自駕與大眾交通。
+        </p>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-card">
+          <div class="countdown-label">
+            <i class="fa-solid fa-plane-departure"></i> 距離台北起飛出發還有：
+          </div>
+          <div class="countdown-timer" id="countdown-timer">
+            <div class="time-block"><span id="cd-days">--</span><label>天</label></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-hours">--</span><label>時</label></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-mins">--</span><label>分</label></div>
+            <div class="time-sep">:</div>
+            <div class="time-block"><span id="cd-secs">--</span><label>秒</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flight Summary Cards -->
+      <div class="flight-cards-container">
+        <div class="flight-card outbound">
+          <div class="flight-header">
+            <span class="flight-tag tag-depart"><i class="fa-solid fa-plane-departure"></i> 去程航班</span>
+            <span class="flight-date">11 月 19 日 (週四)</span>
+          </div>
+          <div class="flight-route">
+            <div class="airport">
+              <span class="code">TPE</span>
+              <span class="name">台北桃園 T1</span>
+              <span class="time">14:35</span>
+            </div>
+            <div class="flight-arrow">
+              <span class="duration">3h 10m</span>
+              <div class="line"><i class="fa-solid fa-plane"></i></div>
+              <span class="status">直飛</span>
+            </div>
+            <div class="airport">
+              <span class="code">SDJ</span>
+              <span class="name">仙台機場</span>
+              <span class="time">18:45</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flight-card inbound">
+          <div class="flight-header">
+            <span class="flight-tag tag-return"><i class="fa-solid fa-plane-arrival"></i> 回程航班</span>
+            <span class="flight-date">11 月 24 日 (週二)</span>
+          </div>
+          <div class="flight-route">
+            <div class="airport">
+              <span class="code">SDJ</span>
+              <span class="name">仙台機場</span>
+              <span class="time">19:40</span>
+            </div>
+            <div class="flight-arrow">
+              <span class="duration">4h 20m</span>
+              <div class="line"><i class="fa-solid fa-plane"></i></div>
+              <span class="status">直飛</span>
+            </div>
+            <div class="airport">
+              <span class="code">TPE</span>
+              <span class="name">台北桃園 T1</span>
+              <span class="time">23:00</span>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="main-tabs">
+      <button class="tab-btn active" data-tab="itinerary">
+        <i class="fa-solid fa-route"></i> 六天行程
+      </button>
+      <button class="tab-btn" data-tab="hotels-stay">
+        <i class="fa-solid fa-hotel"></i> 住宿與自炊
+      </button>
+      <button class="tab-btn" data-tab="transit-guide">
+        <i class="fa-solid fa-train-subway"></i> 交通與猊鼻溪
+      </button>
+      <button class="tab-btn" data-tab="map-view">
+        <i class="fa-solid fa-map-location-dot"></i> 景點地圖
+      </button>
+      <button class="tab-btn" data-tab="spots-vault">
+        <i class="fa-solid fa-compass"></i> 收藏景點
+      </button>
+    </nav>
+
+    <!-- TAB 1: ITINERARY (DEFAULT) -->
+    <main id="tab-itinerary" class="tab-content active">
+      
+      <section class="trip-overview-section" aria-labelledby="trip-overview-title">
+        <h2 id="trip-overview-title">六天速覽</h2>
+        <div id="trip-overview" class="trip-overview-grid"></div>
+      </section>
+      <div class="trip-mode" role="group" aria-label="交通模式">
+        <span>每日交通</span>
+        <button type="button" data-travel-mode="drive" aria-pressed="true">分段自駕</button>
+        <button type="button" data-travel-mode="transit" aria-pressed="false">大眾交通</button>
+      </div>
+      <!-- Day Switcher Sub-tabs -->
+      <div class="day-switcher">
+        <button class="day-btn active" data-day="day1">
+          <span class="d-num">Day 1</span>
+          <span class="d-date">11/19 (四)</span>
+          <span class="d-theme">抵達・宿：LiVEMAX國分町</span>
+        </button>
+        <button class="day-btn" data-day="day2">
+          <span class="d-num">Day 2</span>
+          <span class="d-date">11/20 (五)</span>
+          <span class="d-theme">青葉城跡・瑞鳳殿</span>
+        </button>
+        <button class="day-btn" data-day="day3">
+          <span class="d-num">Day 3</span>
+          <span class="d-date">11/21 (六)</span>
+          <span class="d-theme">鹽竈海鮮勝手丼 ➔ 宿：秋保綠水亭</span>
+        </button>
+        <button class="day-btn" data-day="day4">
+          <span class="d-num">Day 4</span>
+          <span class="d-date">11/22 (日)</span>
+          <span class="d-theme">磊磊峽・秋保大瀑布</span>
+        </button>
+        <button class="day-btn" data-day="day5">
+          <span class="d-num">Day 5</span>
+          <span class="d-date">11/23 (一)</span>
+          <span class="d-theme">円通院・木屋自炊</span>
+        </button>
+        <button class="day-btn" data-day="day6">
+          <span class="d-num">Day 6</span>
+          <span class="d-date">11/24 (二)</span>
+          <span class="d-theme">木屋退房・返台</span>
+        </button>
+      </div>
+
+      <!-- Split View: Daily Schedule + Interactive Map Panel -->
+      <div class="itinerary-split-layout">
+        
+        <!-- Left: Timeline Section -->
+        <div class="timeline-wrapper" id="timeline-container">
+          <!-- Populated dynamically via JS based on selected Day -->
+        </div>
+
+        <!-- Right: Synchronized Mini Interactive Map -->
+        <div class="itinerary-map-sidebar">
+          <div class="map-sidebar-header">
+            <span class="sidebar-title"><i class="fa-solid fa-map-location-dot text-gold"></i> 當日行程路線</span>
+            <span class="map-hint">按圖釘查看地點，交通模式會切換路線</span>
+          </div>
+          <div id="itinerary-day-map" class="day-map-frame"></div>
+          <p id="itinerary-day-map-status" class="map-status" role="status">載入地圖中。也可<a href="https://www.google.com/maps/search/?api=1&amp;query=Sendai%2C+Japan" target="_blank" rel="noopener">在 Google Maps 查看仙台周邊</a>。</p>
+          <div id="day-route-summary" class="day-route-summary"></div>
+          <div class="map-legend">
+            <span class="legend-item"><span class="dot dot-food"></span> 美食餐廳</span>
+            <span class="legend-item"><span class="dot dot-spot"></span> 名勝/體驗</span>
+            <span class="legend-item"><span class="dot dot-stay"></span> 住宿飯店</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <section id="tab-hotels-stay" class="tab-content">
+      <div class="dashboard-card trip-guide">
+        <h2>五晚住宿</h2>
+        <div class="trip-guide-grid">
+          <article><h3>仙台國分町 LiVEMAX</h3><p>11/19 15:00 起入住，11/21 05:00–10:00 退房。四人兩間，兩晚不含餐。</p></article>
+          <article><h3>秋保溫泉綠水亭</h3><p>11/21 15:00–18:00 入住，11/23 10:00 前退房。四人一間，兩晚含早餐。晚餐另排，住宿有免費停車。</p></article>
+          <article><h3>Matsushima hill bungalow</h3><p>11/23 15:00–19:00 入住，11/24 10:00 前退房。四人包棟一晚，不含餐。停車進場依房東資訊。</p></article>
+        </div>
+        <h2>11/23 松島自炊</h2>
+        <p>約 15:10 離開松島海岸，15:20–15:50 去 <a href="https://www.acoop-east-t.jp/store/list/store_52.html">A&amp;COOP 松島店</a>，16:00–16:30 入住。可買肉片、白菜、菇類、豆腐、烏龍麵與湯底，也一起買隔天早餐。鍋具以房東資訊為準，想簡單吃可選熟食。</p>
+        <p>大眾交通版可向 <a href="https://matsushima.0152.jp/">松島町第一交通</a> 詢問四人及行李配車、超市停靠和隔日接車。</p>
+      </div>
+    </section>
+
+    <section id="tab-transit-guide" class="tab-content">
+      <div class="dashboard-card trip-guide">
+        <h2>分段自駕</h2>
+        <p>11/21 約 08:30 仙台站東口取車，11/24 約 15:30–16:00 到仙台機場門市還車。四人各有大行李可先看 Noah／Voxy 級距。租期超過 72 小時，以實際取還時刻詢價，確認異地還車、免責補償與 ETC 卡。持台灣駕照需帶正本、正式日文譯本及護照。</p>
+        <p><a href="https://store.nipponrentacar.co.jp/b/nrs/info/710170/">仙台站取車</a> ・ <a href="https://store.nipponrentacar.co.jp/b/nrs/info/710228/">仙台機場還車</a> ・ <a href="https://www.thb.gov.tw/cp.aspx?n=251">駕照文件</a> ・ <a href="https://www.pref.miyagi.jp/soshiki/mts-park/">松島停車與壅塞</a></p>
+        <h2>大眾交通</h2>
+        <p>11/21 15:00 仙台站東口搭綠水亭去程接駁，11/23 10:00 從旅館回仙台站，兩段各於前日 15:00 前預約。11/23 接 11:10 JR 仙石線。</p>
+        <p><a href="https://www.ryokusuitei.co.jp/access/">綠水亭接駁</a> ・ <a href="https://timetables.jreast.co.jp/2611/train/130/130821.html">11/23 仙石線</a></p>
+        <h2>11/20 猊鼻溪整日替換</h2>
+        <p>想搭船可用猊鼻溪替換仙台市區。11/8 已有落葉回報，紅葉優先可留瑞鳳殿。12:00 船班約 90 分鐘，成人 ¥2,000，依天候及船公司當天營運。</p>
+        <p><strong>開車</strong>　09:00 左右從仙台出發，單程抓兩小時，搭完船回仙台用餐。</p>
+        <p><strong>JR</strong>　08:50 仙台 → 09:21 一關，10:16 → 10:51 猊鼻溪。15:08 猊鼻溪 → 15:40 一關，16:51 → 17:23 仙台。</p>
+        <p><a href="https://www.ichitabi.jp/spot/data.php?p=1">一關乘船資訊</a> ・ <a href="https://koyo.walkerplus.com/detail/ar0203e12894/data.html">猊鼻溪葉況</a></p>
+      </div>
+    </section>
+
+    <!-- TAB 4: FULL INTERACTIVE MAP VIEW -->
+    <section id="tab-map-view" class="tab-content">
+      <div class="fullmap-container">
+        <div class="map-controls-bar">
+          <div class="filter-group">
+            <label><i class="fa-solid fa-filter"></i> 區域篩選：</label>
+            <button class="map-filter-btn active" data-filter="all">全部 (All)</button>
+            <button class="map-filter-btn" data-filter="matsushima_shiogama">松島・鹽竈</button>
+            <button class="map-filter-btn" data-filter="sendai_city">仙台市區</button>
+            <button class="map-filter-btn" data-filter="akiu_nikka">秋保溫泉・宮城峽</button>
+            <button class="map-filter-btn" data-filter="zao_shiroishi">藏王・白石・柴田</button>
+            <button class="map-filter-btn" data-filter="tashirojima_ishinomaki">田代島・石卷 (候選)</button>
+          </div>
+          <div class="map-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="map-search-input" placeholder="搜尋景點名稱、關鍵字、地址...">
+          </div>
+        </div>
+        <div id="full-interactive-map" class="full-map-frame"></div>
+          <p id="full-interactive-map-status" class="map-status" role="status">載入地圖中。也可<a href="https://www.google.com/maps/search/?api=1&amp;query=Sendai%2C+Japan" target="_blank" rel="noopener">在 Google Maps 查看仙台周邊</a>。</p>
+      </div>
+    </section>
+
+    <!-- TAB 5: SPOTS VAULT (50 PLACES CARDS) -->
+    <section id="tab-spots-vault" class="tab-content">
+      <div class="vault-header">
+        <div class="vault-title-group">
+          <h2><i class="fa-solid fa-bookmark"></i> Google Maps 收藏景點資料庫</h2>
+          <p>整合自您的 Google Maps 清單（共 50 處景點與店家），包含旅客實測備註與防雷建議。</p>
+        </div>
+        <div class="vault-filters">
+          <button class="vault-btn active" data-vault-filter="all">全部 (<span id="count-all">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="matsushima_shiogama">松島・鹽竈 (<span id="count-matsushima">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="sendai_city">仙台市區 (<span id="count-sendai">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="akiu_nikka">秋保・宮城峽 (<span id="count-akiu">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="zao_shiroishi">藏王・白石 (<span id="count-zao">0</span>)</button>
+          <button class="vault-btn" data-vault-filter="tashirojima_ishinomaki">田代島・石卷 (<span id="count-tashiro">0</span>)</button>
+        </div>
+      </div>
+
+      <div class="spots-grid" id="spots-cards-grid">
+        <!-- Rendered dynamically from JS -->
+      </div>
+    </section>
+
+    <!-- Modal for Spot Detail Info -->
+    <div id="spot-modal" class="modal-backdrop">
+      <div class="modal-card">
+        <button class="modal-close-btn" id="modal-close">&times;</button>
+        <div class="modal-header">
+          <span class="modal-area-badge" id="modal-area">仙台市區</span>
+          <h3 id="modal-title">景點名稱</h3>
+        </div>
+        <div class="modal-body">
+          <div class="modal-note-box" id="modal-note-box">
+            <strong><i class="fa-solid fa-lightbulb"></i> 旅客實測筆記：</strong>
+            <p id="modal-note">筆記內容</p>
+          </div>
+          <div class="modal-info-row">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="modal-address">景點地址</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" target="_blank" id="modal-gmaps-link" class="modal-btn btn-gmaps">
+            <i class="fa-solid fa-map-location-dot"></i> 在 Google Maps 中開啟導航
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>202611JapanTrip 🍁 日本東北自由行計畫知識庫 ｜ 4人同行 2026/11/19 ~ 11/24 (仙台・鹽竈・松島・秋保名湯)</p>
+    </footer>
+
+  </div>
+
+  <!-- Leaflet Map JS -->
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/maplibre/maplibre-gl.js"></script>
+  <script src="vendor/maplibre/leaflet-maplibre-gl.js"></script>
+  
+  <!-- App JS -->
+  <script src="assets/trip-routes.js?v=geometry1"></script>
+  <script src="assets/trip-transit.js"></script>
+  <script src="app.js?v=route-attribution1"></script>
+</body>
+</html>
