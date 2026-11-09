@@ -835,6 +835,9 @@ function createTripMap(id, zoom) {
 
   map = L.map(id, { minZoom: 5, maxZoom: 18 })
     .setView([38.2601, 140.8824], zoom);
+  attachGoogleBasemap(map, status).catch(() => {
+    // Keep the bundled map when the Google renderer cannot initialize.
+  });
   const attribution = '<a href="https://openfreemap.org/">OpenFreeMap</a> · <a href="https://openmaptiles.org/">© OpenMapTiles</a> · <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>';
   map.createPane("overview").style.zIndex = 190;
   L.imageOverlay("assets/tohoku-overview.webp?v=positron", [[37.71859033, 140.2734375], [38.82259098, 141.6796875]], {
@@ -858,7 +861,7 @@ function createTripMap(id, zoom) {
     canvas.style.opacity = "0";
     let failed = false;
     vectorMap.on("error", () => {
-      if (canvas.style.opacity === "0") {
+      if (canvas.style.opacity === "0" && !map.getContainer().classList.contains("google-basemap-active")) {
         failed = true;
         showFailure();
       }
@@ -873,6 +876,82 @@ function createTripMap(id, zoom) {
     showFailure();
   }
   return map;
+}
+
+let googleMapsLoader;
+
+function loadGoogleMaps() {
+  googleMapsLoader ??= fetch("assets/google-maps-config.json", { cache: "no-store" })
+    .then(response => response.ok ? response.json() : null)
+    .then(config => {
+      if (!config?.browserKey) return null;
+
+      return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        const timeout = setTimeout(() => reject(new Error("Google Maps load timeout")), 12000);
+        window.tripGoogleMapsReady = () => {
+          clearTimeout(timeout);
+          resolve(window.google.maps);
+        };
+        window.gm_authFailure = () => {
+          clearTimeout(timeout);
+          document.dispatchEvent(new Event("trip-google-maps-auth-failure"));
+          reject(new Error("Google Maps authentication failed"));
+        };
+        script.onerror = () => {
+          clearTimeout(timeout);
+          reject(new Error("Google Maps script could not load"));
+        };
+        const params = new URLSearchParams({
+          key: config.browserKey,
+          callback: "tripGoogleMapsReady",
+          loading: "async",
+          language: "zh-TW",
+          region: "JP",
+          v: "quarterly"
+        });
+        script.async = true;
+        script.referrerPolicy = "origin";
+        script.src = `https://maps.googleapis.com/maps/api/js?${params}`;
+        document.head.append(script);
+      });
+    })
+    .catch(() => null);
+  return googleMapsLoader;
+}
+
+async function attachGoogleBasemap(map, status) {
+  const maps = await loadGoogleMaps();
+  if (!maps) return;
+
+  const container = map.getContainer();
+  const basemap = document.createElement("div");
+  basemap.className = "trip-google-basemap";
+  container.prepend(basemap);
+  const googleMap = new maps.Map(basemap, {
+    center: map.getCenter(),
+    zoom: map.getZoom(),
+    renderingType: maps.RenderingType.RASTER,
+    disableDefaultUI: true,
+    clickableIcons: false,
+    gestureHandling: "none",
+    keyboardShortcuts: false,
+    isFractionalZoomEnabled: false
+  });
+  const sync = () => googleMap.moveCamera({ center: map.getCenter(), zoom: map.getZoom() });
+  map.on("move resize", sync);
+
+  const ready = googleMap.addListener("tilesloaded", () => {
+    ready.remove();
+    container.classList.add("google-basemap-active");
+    status.hidden = true;
+  });
+  document.addEventListener("trip-google-maps-auth-failure", () => {
+    ready.remove();
+    map.off("move resize", sync);
+    container.classList.remove("google-basemap-active");
+    basemap.remove();
+  }, { once: true });
 }
 
 function initDayMap() {

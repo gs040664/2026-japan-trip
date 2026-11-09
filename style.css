@@ -1638,6 +1638,12 @@ body {
 .trip-guide a { color: #f2be7c; text-decoration: underline; }
 
 .day-map-frame, .full-map-frame { background: #e9eef1; }
+.trip-google-basemap { position: absolute; inset: 0; z-index: 0; visibility: hidden; pointer-events: none; }
+.trip-google-basemap a { pointer-events: auto; }
+.google-basemap-active .trip-google-basemap { visibility: visible; }
+.google-basemap-active .leaflet-tile-pane,
+.google-basemap-active .leaflet-overview-pane { visibility: hidden; }
+.google-basemap-active .leaflet-control-attribution { display: none; }
 .trip-route-pin {
   display: grid;
   place-items: center;
