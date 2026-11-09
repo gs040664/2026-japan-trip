@@ -1,5 +1,4 @@
 // Road geometry: OSRM / FOSSGIS, © OpenStreetMap contributors (ODbL).
-// Transit stop sequences are schematic; the web app draws those connections itself.
 const TRIP_ROUTE_POINTS = {
   airport: ["仙台機場",38.13972,140.92909,"仙台空港"],
   sendai: ["仙台站",38.26013,140.88243,"仙台駅",5],
@@ -19,10 +18,7 @@ const TRIP_ROUTE_POINTS = {
 };
 
 const TRIP_MAP_ROUTES = {
-  day1: { transit: ["airport", "sendai"] },
-  day2: { transit: ["castle", "dashiro", "zuihoden"] },
   day3: {
-    transit: ["sendai", "market", "shrine", "sendai", "ryoku"],
     drive: {
       stops: ["sendai", "market", "shrine", "ryoku"],
       line: [
@@ -47,7 +43,6 @@ const TRIP_MAP_ROUTES = {
     }
   },
   day4: {
-    transit: ["ryoku", "gorge", "falls", "ryoku"],
     drive: {
       stops: ["ryoku", "gorge", "falls", "ryoku"],
       line: [
@@ -78,7 +73,6 @@ const TRIP_MAP_ROUTES = {
     }
   },
   day5: {
-    transit: ["ryoku", "sendai", "coast", "temple", "coop", "cabin"],
     drive: {
       stops: ["ryoku", "temple", "coop", "cabin"],
       line: [
@@ -95,7 +89,6 @@ const TRIP_MAP_ROUTES = {
     }
   },
   day6: {
-    transit: ["cabin", "takagi", "sendai", "airport"],
     drive: {
       stops: ["cabin", "airport"],
       line: [

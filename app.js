@@ -975,16 +975,30 @@ function directionsUrl(points, mode) {
   return `https://www.google.com/maps/dir/?${params}`;
 }
 
+const ROUTE_LEG_STYLE = {
+  drive: { label: "自駕", color: "#1769e0", navigation: "driving" },
+  airportRail: { label: "機場線", color: "#7c3fbc", navigation: "transit" },
+  senseki: { label: "JR 仙石線", color: "#7c3fbc", navigation: "transit" },
+  walk: { label: "步行", color: "#167950", navigation: "walking", dash: "3 5" },
+  taxi: { label: "計程車道路", color: "#1769e0", navigation: "driving" },
+  bus: { label: "巴士道路參考", color: "#1769e0", navigation: "transit", dash: "8 5" },
+  shuttle: { label: "接駁道路參考", color: "#1769e0", navigation: "driving", dash: "8 5" }
+};
+
 function renderDayRoute(dayKey) {
-  const route = TRIP_MAP_ROUTES[dayKey];
-  const driving = travelMode === "drive" ? route.drive : null;
-  const keys = driving ? driving.stops : route.transit;
+  const driving = travelMode === "drive" ? TRIP_MAP_ROUTES[dayKey]?.drive : null;
+  const legs = driving ? [{ mode: "drive", line: driving.line }] : TRIP_TRANSIT_LEGS[dayKey];
+  const keys = driving ? driving.stops : [legs[0].from, ...legs.map(leg => leg.to)];
   const points = keys.map(key => TRIP_ROUTE_POINTS[key]);
-  const coordinates = driving ? driving.line : points.map(([, lat, lng]) => [lat, lng]);
+  const coordinates = legs.flatMap(leg => leg.line);
   const pathStyle = { interactive: false, lineCap: "round" };
-  const dashArray = driving ? undefined : "7 9";
-  L.polyline(coordinates, { ...pathStyle, color: "#fff", weight: 8, opacity: 0.9, dashArray }).addTo(dayRouteLayer);
-  L.polyline(coordinates, { ...pathStyle, color: "#1769e0", weight: 4, dashArray, className: "trip-route-line" }).addTo(dayRouteLayer);
+  legs.forEach(({ line }) => {
+    L.polyline(line, { ...pathStyle, color: "#fff", weight: 8, opacity: 0.9 }).addTo(dayRouteLayer);
+  });
+  legs.forEach(({ line, mode }) => {
+    const { color, dash: dashArray } = ROUTE_LEG_STYLE[mode];
+    L.polyline(line, { ...pathStyle, color, weight: 4, dashArray, className: "trip-route-line" }).addTo(dayRouteLayer);
+  });
 
   const order = new Map();
   keys.forEach((key, index) => order.set(key, [...(order.get(key) ?? []), index + 1]));
@@ -1002,15 +1016,16 @@ function renderDayRoute(dayKey) {
   const summary = document.getElementById("day-route-summary");
   const items = points.map((point, index) => {
     const next = points[index + 1];
-    const link = !driving && next
-      ? ` <a href="${directionsUrl([point, next], "transit")}" target="_blank" rel="noopener">查到下一站</a>`
+    const legStyle = !driving && next ? ROUTE_LEG_STYLE[legs[index].mode] : null;
+    const link = legStyle
+      ? ` <a href="${directionsUrl([point, next], legStyle.navigation)}" target="_blank" rel="noopener">${legStyle.label} →</a>`
       : "";
     return `<li>${point[0]}${link}</li>`;
   }).join("");
-  summary.innerHTML = `<p class="route-key ${driving ? "" : "route-key-transit"}">${driving ? "自駕道路參考線" : "大眾交通與步行順序示意"}</p>
+  summary.innerHTML = `<p class="route-key">${driving ? "自駕道路參考線" : "紫色鐵路・藍色道路・綠色步行"}</p>
     <ol>${items}</ol>
-    ${driving ? `<a href="${directionsUrl(points, "driving")}" target="_blank" rel="noopener">用 Google Maps 開啟自駕路線</a>
-      <small>道路資料 © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>，以即時導航為準。</small>` : ""}`;
+    ${driving ? `<a href="${directionsUrl(points, "driving")}" target="_blank" rel="noopener">用 Google Maps 開啟自駕路線</a>` : ""}
+    <small>道路 © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>${driving ? "，以即時導航為準。" : ` ・ 鐵道依 <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html">日本國土交通省 N02 資料</a>裁切（<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>）。巴士和接駁的虛線沿道路繪製，供參考。`}</small>`;
   return { points, coordinates };
 }
 
