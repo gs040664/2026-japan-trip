@@ -75,15 +75,15 @@ const SPOTS_DATA = [
   },
   {
     id: 2,
-    name: "Sendai Gyutan Taka (炭烤牛舌 閣)",
+    name: "牛たん料理 閣 ブランドーム本店",
     rawTitle: "Sendai Gyutan Taka",
     area: "sendai_city",
     areaName: "仙台市區",
-    lat: 38.2612,
-    lng: 140.8719,
+    lat: 38.261364,
+    lng: 140.8720751,
     type: "food",
     typeName: "美食/牛舌",
-    address: "宮城縣仙台市青葉區一番町 4-5-34",
+    address: "仙台市青葉区一番町3-8-14 B1F",
     note: "米其林推薦仙台頂級厚切炭烤牛舌！獨家特製牛舌刺身與炭火香氣絕讚。"
   },
   {
@@ -235,8 +235,8 @@ const SPOTS_DATA = [
     rawTitle: "Akiu Winery",
     area: "akiu_nikka",
     areaName: "秋保・宮城峽",
-    lat: 38.2261,
-    lng: 140.7145,
+    lat: 38.2265746,
+    lng: 140.7278661,
     type: "food",
     typeName: "葡萄酒莊",
     address: "宮城縣仙台市太白區秋保町湯元字枇杷原西 6",
@@ -248,8 +248,8 @@ const SPOTS_DATA = [
     rawTitle: "Dottore",
     area: "akiu_nikka",
     areaName: "秋保・宮城峽",
-    lat: 38.2285,
-    lng: 140.7162,
+    lat: 38.225579,
+    lng: 140.7209178,
     type: "food",
     typeName: "森林窯烤披薩",
     address: "宮城縣仙台市太白區秋保町湯元字釜土 1",
@@ -488,6 +488,78 @@ const SPOTS_DATA = [
     typeName: "日本三景",
     address: "宮城縣宮城郡松島町松島字町內",
     note: "名列日本三景之一，由 260 座長滿松樹的島嶼構成。搭乘 11:30 定期遊覽船巡航松島灣。JR 仙石線松島海岸站步行 5 分。"
+  },
+  {
+    id: 105,
+    name: "だし廊 DASHIRO 仙台南町通り本店",
+    rawTitle: "だし廊 DASHIRO 仙台南町通り本店",
+    area: "sendai_city",
+    areaName: "仙台市區",
+    lat: 38.258577,
+    lng: 140.874922,
+    type: "food",
+    typeName: "拉麵",
+    address: "仙台市青葉区一番町2-2-11 TKビル1F"
+  },
+  {
+    id: 106,
+    name: "佗び助",
+    rawTitle: "佗び助",
+    area: "sendai_city",
+    areaName: "仙台市區",
+    lat: 38.2624099,
+    lng: 140.8650501,
+    type: "food",
+    typeName: "芹菜鍋",
+    address: "仙台市青葉区立町6-16"
+  },
+  {
+    id: 107,
+    name: "柏鮨 秋保店",
+    rawTitle: "柏鮨 秋保店",
+    area: "akiu_nikka",
+    areaName: "秋保溫泉",
+    lat: 38.2283447,
+    lng: 140.7190015,
+    type: "food",
+    typeName: "壽司",
+    address: "仙台市太白区秋保町湯元字薬師32-1"
+  },
+  {
+    id: 108,
+    name: "松島 寿司幸",
+    rawTitle: "松島 寿司幸",
+    area: "matsushima_shiogama",
+    areaName: "松島・鹽釜",
+    lat: 38.3701631,
+    lng: 141.062083,
+    type: "food",
+    typeName: "壽司",
+    address: "宮城県宮城郡松島町松島字町内88-1"
+  },
+  {
+    id: 109,
+    name: "A&COOP 松島店",
+    rawTitle: "A&COOP 松島店",
+    area: "matsushima_shiogama",
+    areaName: "松島・鹽釜",
+    lat: 38.3814,
+    lng: 141.07096,
+    type: "food",
+    typeName: "自炊採買",
+    address: "宮城県宮城郡松島町高城字町東二20-12"
+  },
+  {
+    id: 110,
+    name: "塩竈 すし哲 S-PAL仙台店",
+    rawTitle: "塩竈 すし哲 S-PAL仙台店",
+    area: "sendai_city",
+    areaName: "仙台市區",
+    lat: 38.2586914,
+    lng: 140.8809288,
+    type: "food",
+    typeName: "壽司",
+    address: "仙台市青葉区中央1-1-1 S-PAL仙台 B1F"
   }
 ];
 
@@ -502,19 +574,19 @@ const ITINERARY_DATA = {
     items: [
       stop("14:35–18:45", "transit", "桃園 → 仙台", "航班時間採當地時間。"),
       stop("抵達後", "transit", "仙台機場線 → 仙台站", "搭機場線進市區，再前往國分町。", 5),
-      stop("晚餐", "food", "仙台牛舌", "時間充裕可吃牛たん料理 閣本店，或在仙台站用餐後入住。"),
+      stop("晚餐", "food", "牛たん料理 閣 本店", "時間充裕可吃牛舌，或在仙台站用餐後入住。", 2),
       stop("15:00 起可入住", "stay", "LiVEMAX 國分町", "四人兩間，兩晚不含餐。")
     ]
   },
   day2: {
     dayNum: "Day 2", date: "11/20（五）", area: "仙台歷史與紅葉", stay: "LiVEMAX 國分町",
-    morning: "青葉城跡", afternoon: "瑞鳳殿", backups: ["大崎八幡宮", "仙台朝市"],
-    transitSummary: "市區搭觀光巴士或短程計程車。猊鼻溪可整天替換，班次在交通分頁。",
+    morning: "仙台朝市", afternoon: "瑞鳳殿", backups: ["青葉城跡", "仙台市博物館"],
+    transitSummary: "09:15 從 LiVEMAX 國分町搭計程車到朝市。猊鼻溪可整天替換，班次在交通分頁。",
     items: [
-      stop("10:00", "spot", "青葉城跡", "上午看城跡與仙台市景。", 41),
-      stop("12:30", "food", "だし廊 DASHIRO 本店", "食べログ 3.74，2025 拉麵 EAST 百名店。", null, "https://tabelog.com/miyagi/A0401/A040101/4019493/"),
+      stop("09:30–10:30", "spot", "仙台朝市", "齋藤惣菜店 10:00 開門。想再看市景，可在 10:30 從朝市搭車到青葉城本丸，抓約 15–20 分鐘。雨天備案為仙台市博物館。", 40, "https://www.sendaiasaichi.pro/access"),
+      stop("12:30", "food", "だし廊 DASHIRO 本店", "食べログ 3.74，2025 拉麵 EAST 百名店。", 105, "https://tabelog.com/miyagi/A0401/A040101/4019493/"),
       stop("14:30", "spot", "瑞鳳殿", "先看白天紅葉，15:30 預計點燈。週五依一般入場時間。", 29, "https://www.sentabi.jp/events/217?lang=en"),
-      stop("18:00–18:30", "food", "佗び助 芹菜鍋", "可先詢四人座位，備案是仙台站旁的せり草庵。", null, "https://tabelog.com/miyagi/A0401/A040101/4002537/")
+      stop("18:00–18:30", "food", "佗び助 芹菜鍋", "可先詢四人座位，備案是仙台站旁的せり草庵。", 106, "https://tabelog.com/miyagi/A0401/A040101/4002537/")
     ]
   },
   day3: {
@@ -538,7 +610,7 @@ const ITINERARY_DATA = {
       stop("上午", "spot", "磊磊峽", "旅館早餐後步行看覗橋和峽谷。", 22),
       stop("11:00 左右", "food", "Dottore 森林披薩", "食べログ 3.61，2023 披薩百名店。搭巴士時留意排隊時間。", 20, "https://tabelog.com/miyagi/A0401/A040105/4013772/"),
       stop("下午", "spot", "秋保大瀑布", "以觀景台為主。葉況普通可換天守閣自然公園，看庭園、泡足湯。", 104),
-      stop("18:00", "food", "柏鮨 秋保店", "先詢四人座位，備案是さいち熟食。", null, "https://tabelog.com/miyagi/A0401/A040105/4012604/")
+      stop("18:00", "food", "柏鮨 秋保店", "先詢四人座位，備案是さいち熟食。", 107, "https://tabelog.com/miyagi/A0401/A040105/4012604/")
     ]
   },
   day5: {
@@ -547,9 +619,9 @@ const ITINERARY_DATA = {
     transitSummary: "09:40 左右退房，10:00 接駁回仙台站，11:10–11:49 JR 至松島海岸。約 15:10 搭車去超市和木屋。",
     driveSummary: "09:30 左右開往松島，目標 11:00 前停車。約 15:10 開去 A&COOP，再到木屋。",
     items: [
-      stop("12:20", "food", "松島 寿司幸", "食べログ 3.56，先問四人午餐。備案是さんとり茶屋。", null, "https://tabelog.com/miyagi/A0404/A040404/4001492/"),
+      stop("12:20", "food", "松島 寿司幸", "食べログ 3.56，先問四人午餐。備案是さんとり茶屋。", 108, "https://tabelog.com/miyagi/A0404/A040404/4001492/"),
       stop("約 13:30", "spot", "松島円通院", "Weathernews 目前預估約 11/25 開始落葉。葉況轉差時可換 14:00 仁王丸。", 25, "https://weathernews.jp/koyo/spot/23421/"),
-      stop("15:20–15:50", "food", "A&COOP 松島店採買", "一起買晚餐和隔日早餐。火鍋可備肉片、白菜、菇類、豆腐和烏龍麵。", null, "https://www.acoop-east-t.jp/store/list/store_52.html"),
+      stop("15:20–15:50", "food", "A&COOP 松島店採買", "一起買晚餐和隔日早餐。火鍋可備肉片、白菜、菇類、豆腐和烏龍麵。", 109, "https://www.acoop-east-t.jp/store/list/store_52.html"),
       stop("16:00–16:30", "stay", "松島包棟木屋自炊", "15:00–19:00 可入住。公開頁列免費私人停車，依房東資訊入場。")
     ]
   },
@@ -560,7 +632,7 @@ const ITINERARY_DATA = {
     driveSummary: "松島或仙台站午餐，15:30–16:00 到機場租車門市，留時間加油、驗車和接駁。",
     items: [
       stop("10:00 前", "stay", "木屋退房", "吃前一天備好的早餐，整理行李後出發。"),
-      stop("午餐", "food", "すし哲 S-PAL 仙台店", "食べログ 3.68。自駕也可留在松島吃午餐。", 5, "https://tabelog.com/miyagi/A0401/A040101/4000160/"),
+      stop("午餐", "food", "すし哲 S-PAL 仙台店", "食べログ 3.68。自駕也可留在松島吃午餐。", 110, "https://tabelog.com/miyagi/A0401/A040101/4000160/"),
       stop("19:40", "transit", "仙台 → 桃園", "19:40 仙台起飛，23:00 桃園抵達，時間為當地時間。")
     ]
   }
@@ -1005,7 +1077,9 @@ function renderDayRoute(dayKey) {
   for (const [key, numbers] of order) {
     const [name, lat, lng, query, spotId] = TRIP_ROUTE_POINTS[key];
     const label = numbers.join("・");
-    const icon = L.divIcon({ className: "trip-route-pin", html: label, iconSize: [32, 32], iconAnchor: [16, 16] });
+    const isFood = SPOTS_DATA.find(spot => spot.id === spotId)?.type === "food";
+    const className = isFood ? "trip-route-pin trip-route-pin-food" : "trip-route-pin";
+    const icon = L.divIcon({ className, html: label, iconSize: [32, 32], iconAnchor: [16, 16] });
     const marker = L.marker([lat, lng], { icon, title: `${label} ${name}`, alt: `${label} ${name}` });
     const url = `https://www.google.com/maps/search/?${new URLSearchParams({ api: "1", query })}`;
     marker.bindPopup(`<strong>${label}　${name}</strong><br><a href="${url}" target="_blank" rel="noopener">在 Google Maps 開啟</a>`);
@@ -1043,7 +1117,7 @@ function updateDayMap(dayKey) {
   
   daySpots.forEach(spot => {
     const icon = getCustomMarkerIcon(spot.type, dayNum);
-    const marker = L.marker([spot.lat, spot.lng], { icon: icon });
+    const marker = L.marker([spot.lat, spot.lng], { icon, title: spot.name, alt: spot.name });
     
     const popupContent = `
       <div style="font-family: 'Noto Sans TC', sans-serif; min-width: 190px;">
@@ -1129,7 +1203,7 @@ function renderFullMapMarkers(filterArea, searchQuery = "") {
   filtered.forEach(spot => {
     const day = tripDayForSpot(spot.id);
     const icon = getCustomMarkerIcon(spot.type, day ? Number(day.dayNum.slice(4)) : null);
-    const marker = L.marker([spot.lat, spot.lng], { icon: icon });
+    const marker = L.marker([spot.lat, spot.lng], { icon, title: spot.name, alt: spot.name });
     
     const popupContent = `
       <div style="font-family: 'Noto Sans TC', sans-serif; min-width: 200px;">

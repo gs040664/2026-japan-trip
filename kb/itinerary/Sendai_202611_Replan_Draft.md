@@ -2,7 +2,7 @@
 id: Sendai_202611_Replan_Draft
 title: 仙台、秋保、松島六天五夜精簡重排
 tags: [itinerary, draft, sendai, shiogama, akiu, matsushima]
-updated: 2026-11-09
+updated: 2026-11-10
 status: draft
 ---
 
@@ -25,7 +25,7 @@ status: draft
 | 日期 | 上午 | 下午／晚上 | 兩個備案 |
 |---|---|---|---|
 | **11/19（四）** | 出發準備 | 18:45 抵仙台 → Access 線 → 仙台站晚餐或直接到國分町入住。航班後保留彈性。 | 定禪寺通短走、仙台站內牛舌通。 |
-| **11/20（五）** | 10:00 左右青葉城跡 | 12:30 左右到だし廊吃拉麵，14:30 到瑞鳳殿，白天先逛，15:30 起看紅葉點燈，再回市區用餐。前往瑞鳳殿留步行上坡時間。想搭猊鼻溪船可改用下方整日替換方案。 | 大崎八幡宮、仙台朝市。 |
+| **11/20（五）** | **09:15 左右從 LiVEMAX 國分町搭計程車，09:30–10:30 逛仙台朝市**。齋藤惣菜店 10:00 開門，可吃現炸可樂餅。 | 12:30 左右到だし廊吃拉麵，14:30 到瑞鳳殿，白天先逛，15:30 起看紅葉點燈，再回市區用餐。前往瑞鳳殿留步行上坡時間。想搭猊鼻溪船可改用下方整日替換方案。 | 青葉城跡、仙台市博物館。朝市後有餘裕可擇一。 |
 | **11/21（六）** | 08:15–08:30 退房，仙台站寄行李 → JR 仙石線東鹽釜 → 鹽釜水產市場海鮮丼。 | 12:00 左右鹽竈神社，市場到神社可搭車至上方停車場。**13:15 左右離開神社、14:15 前回仙台站**，取行李後搭 **15:00 仙台站東口綠水亭接駁**。抵館後庭園、泡湯。18:00 可安排秋保酒莊晚餐，需先訂。 | 浦霞酒ギャラリー、榮太樓鹽竈本店。只在早於回程門檻且有營業時替換。 |
 | **11/22（日）** | 磊磊峽，短走至覗橋後吃午餐。 | **12:57 秋保・里センター → 13:22 秋保大瀑布，14:30 回程 → 14:57 里センター**。瀑布以觀景台為主，15:31 為宮城交通後備回程。下午回綠水亭。晚餐安排秋保湯元的柏鮨。 | 天守閣自然公園、秋保・里センター室內休息。 |
 | **11/23（一・祝）** | 早餐後 09:40 左右辦退房，**10:00** 綠水亭接駁回仙台站，接 **11:10→11:49** JR 仙石線至松島海岸。 | 抵達先寄行李，12:20 左右午餐，13:30 左右逛 **円通院**。若落葉較多，改搭 **14:00 仁王丸**。約 15:10 搭車 **松島海岸 → A&COOP 松島店 → 磯崎木屋**，目標 16:00–16:30 入住、自炊。 | 仁王丸遊船、五大堂。 |
@@ -50,14 +50,16 @@ status: draft
 
 「仙台之旅」共 52 個地點。以地圖辨識地點，景點取捨用遊客實際心得、旅遊機構現況和紅葉預報，餐廳另查食べログ。以下是依 11/09 查到的資料排出的優先順序，出發前再看現地更新。[仙台之旅收藏](https://maps.app.goo.gl/AXi4jtikyaaNz5bw8)
 
+- **11/20 仙台朝市**。商店街 11 月公休公告未列 11/20。從 HOTEL LiVEMAX Sendai Kokubuncho（國分町 2-8-22）四人共乘計程車到朝市，路程約 1.9 公里，抓 5–10 分鐘車程，另留叫車時間。備用是從飯店步行約 5 分鐘到勾當台公園站，搭南北線往富澤方向兩站到仙台站，從西 1 出口走約 1 分鐘，地鐵 ¥210／人。齋藤惣菜店 10:00 開門。中午再步行去だし廊。[飯店交通](https://www.hotel-livemax.com/miyagi/kokubuncho/) · [朝市交通](https://www.sendaiasaichi.pro/access) · [地鐵運賃](https://www.city.sendai.jp/kokyo/kurashi/machi/kotsu/annai/210enkinnitu.html) · [公休公告](https://www.sendaiasaichi.pro/information/view/148) · [齋藤惣菜店](https://sendaiasaichi.com/shop/view/13)
 - **11/20 瑞鳳殿**。旅人評論提到雕飾及杉林參道，光看建築也有內容。仙台市列例年見頃為 11 月中下旬，當天在 11/16–30 紅葉活動期間，15:30 起有點燈，下午 14:30 到可兼看白天景色。[旅人心得](https://4travel.jp/dm_shisetsu/10003466) · [仙台市紅葉活動](https://www.sentabi.jp/events/217?lang=en)
+- **朝市後想加一站**。晴天可在約 10:30 從朝市附近上車，目的地設為「青葉城本丸会館」，車程抓 15–20 分鐘，到本丸看政宗騎馬像和仙台市景，約 11:45 叫車往だし廊。陰雨或想看展可改搭車去仙台市博物館，當日秋季常設展有仙台城出土資料與伊達政宗具足複製品，抓 45–60 分鐘。[仙台市城跡交通](https://www.city.sendai.jp/shisekichosa/sendaijoaccess.html) · [本丸會館](https://honmarukaikan.com/miru/map.htm) · [博物館秋季展覽](https://www.city.sendai.jp/museum/tenji/josetsuten/josetsuten.html) · [じゃらん旅客心得](https://www.jalan.net/kankou/spt_04101cc3290033170/kuchikomi/0003753764/)
 - **11/23 松島円通院**。收藏清單的瑞巖寺條目有提到這座庭園。じゃらん評論肯定庭園與紅葉。宮城觀光聯盟 11/6 回報石庭與心字池已見頃，三慧殿還有青葉。Weathernews 目前估 11/25 左右開始落葉，11/23 白天仍值得保留，葉況差就用仁王丸替換。約 15:10 出發採買，晚上留在木屋。[じゃらん遊記](https://www.jalan.net/kankou/spt_04401ag2130013519/kuchikomi/0000598498/) · [宮城紅葉現況](https://miyagi-kankou.or.jp/theme/detail.php?id=13533) · [Weathernews 預報](https://weathernews.jp/koyo/spot/23421/)
 - **11/22 秋保天守閣自然公園**。若秋保大瀑布紅葉已過、或不想配合巴士，在湯元改逛庭園與足湯。公園例年見頃約 10 月下旬至 11 月中旬，11/22 是否仍有紅葉看現場更新。[公園與交通](https://akiu-sizen.co.jp/archives/lp/english) · [Walkerplus 見頃](https://koyo.walkerplus.com/detail/ar0204e479911/data.html)
-- **仙台海洋森林水族館**。若 11/20 下雨，可用來替換青葉城跡。じゃらん遊客常提到大水槽與海豚表演。藏王御釜因通往山頂的道路自 11/4 冬季封閉，移出這次候選。[水族館遊記](https://www.jalan.net/kankou/spt_guide000000183351/kuchikomi/0005854376/) · [水族館交通](https://www.uminomori.jp/umino/access/index.html) · [藏王町公告](https://www.zao-machi.com/news/257.html)
+- **仙台海洋森林水族館**。若 11/20 下大雨，可替換上午的仙台朝市，午餐時間依移動調整。じゃらん遊客常提到大水槽與海豚表演。藏王御釜因通往山頂的道路自 11/4 冬季封閉，移出這次候選。[水族館遊記](https://www.jalan.net/kankou/spt_guide000000183351/kuchikomi/0005854376/) · [水族館交通](https://www.uminomori.jp/umino/access/index.html) · [藏王町公告](https://www.zao-machi.com/news/257.html)
 
 ### 11/20 猊鼻溪整日替換方案
 
-じゃらん旅客評價 4.4，乘船穿過峽谷與船夫歌唱值得安排。岩手觀光官方 11/4 已回報開始落葉，Walkerplus 11/8 標為落葉，11/20 以峽谷與乘船為主。想看紅葉就留仙台市區。若更想搭船且船班照常，整天用這套替換青葉城跡與瑞鳳殿。[じゃらん旅客心得](https://www.jalan.net/kankou/spt_03424ee4610068939/kuchikomi/) · [岩手紅葉現況](https://iwatetabi.jp/flower/autumnleaves/) · [Walkerplus 現況](https://koyo.walkerplus.com/detail/ar0203e12894/data.html)
+じゃらん旅客評價 4.4，乘船穿過峽谷與船夫歌唱值得安排。岩手觀光官方 11/4 已回報開始落葉，Walkerplus 11/8 標為落葉，11/20 以峽谷與乘船為主。想看紅葉就留仙台市區。若更想搭船且船班照常，整天用這套替換仙台朝市與瑞鳳殿。[じゃらん旅客心得](https://www.jalan.net/kankou/spt_03424ee4610068939/kuchikomi/) · [岩手紅葉現況](https://iwatetabi.jp/flower/autumnleaves/) · [Walkerplus 現況](https://koyo.walkerplus.com/detail/ar0203e12894/data.html)
 
 | 時間 | 動線 |
 |---|---|
