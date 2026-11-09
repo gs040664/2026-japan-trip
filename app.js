@@ -1025,7 +1025,7 @@ function renderDayRoute(dayKey) {
   summary.innerHTML = `<p class="route-key">${driving ? "自駕道路參考線" : "紫色鐵路・藍色道路・綠色步行"}</p>
     <ol>${items}</ol>
     ${driving ? `<a href="${directionsUrl(points, "driving")}" target="_blank" rel="noopener">用 Google Maps 開啟自駕路線</a>` : ""}
-    <small>道路 © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>${driving ? "，以即時導航為準。" : ` ・ 鐵道依 <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html">日本國土交通省 N02 資料</a>裁切（<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>）。巴士和接駁的虛線沿道路繪製，供參考。`}</small>`;
+    <small><strong>行程路線資料來源</strong><br>${driving ? "道路" : "道路與步行"} © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>${driving ? "，以即時導航為準。" : ` ・ 鐵道依 <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html">日本國土交通省 N02 資料</a>裁切（<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>）。巴士和接駁的虛線沿道路繪製，供參考。`}<br>底圖來源見地圖角落標誌。</small>`;
   return { points, coordinates };
 }
 
